@@ -5,9 +5,15 @@ import SignUpComponent from './Components/SignUpComponent'
 import LogInComponent from './Components/LogInComponent'
 import HomeComponent from './Components/HomeComponent'
 import JournalContainer from './Containers/JournalContainer'
+import {connect} from 'react-redux'
+// import {getUser} from './Redux/actions'
 import './App.css';
 
 class App extends React.Component {
+
+//   componentDidMount() {
+//     this.props.getUser()
+// }
 
   render() {
 
@@ -38,4 +44,17 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(App);
+// function msp(state) {
+//   return {
+//       user: state.user,
+//       journals: state.journals
+//   }
+// }
+
+// function mdp(dispatch) {
+//   return {
+//       getUser: () => dispatch(getUser())
+//   }
+// }
+
+export default App;

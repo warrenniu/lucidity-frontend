@@ -11,7 +11,7 @@ import reportWebVitals from './reportWebVitals';
 import 'fontsource-roboto';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-// const store = createStore(rootReducer, applyMiddleware(thunk))
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 const theme = createMuiTheme({
   palette: {
@@ -32,11 +32,11 @@ const theme = createMuiTheme({
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      {/* <Provider store={store}> */}
+      <Provider store={store}>
       <MuiThemeProvider theme={theme}>
         <App />
       </MuiThemeProvider>
-      {/* </Provider> */}
+      </Provider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
