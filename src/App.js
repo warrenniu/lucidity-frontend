@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, Switch, withRouter} from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import NavComponent from './Components/NavComponent'
 import SignUpComponent from './Components/SignUpComponent'
 import LogInComponent from './Components/LogInComponent'
@@ -9,7 +9,7 @@ import './App.css';
 
 class App extends React.Component {
 
-  render () {
+  render() {
 
     return (
       <div>
@@ -28,6 +28,10 @@ class App extends React.Component {
             <Route path="/home" component={HomeComponent} />
             <Route path="/" component={JournalContainer} />
           </Switch>
+        </div>
+        <div className="div5">
+          <p style={{ 'color': 'black', 'fontSize': '16px' }}>Copyright 2021 Lucidity: A Warren Niu Project</p>
+          <a href="https://github.com/warrenniu/lucidity-frontend" target="_blank" rel="noreferrer"><img src="/github.png" alt="github" /></a>
         </div>
       </div>
     )

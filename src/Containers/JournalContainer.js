@@ -1,7 +1,7 @@
-import React from 'react' 
+import React from 'react'
 
 class JournalContainer extends React.Component {
-    render () {
+    render() {
         return (
             <div>
                 <h3>Journal Container</h3>

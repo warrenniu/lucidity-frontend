@@ -14,8 +14,26 @@
 
   .div1 {
     display: flex;
+    color: purple;
+    align-items: center;
+    justify-content: left;
+  }
+
+  .div2 {
+    display: flex;
+    flex-direction: column;
+    background-color: purple;
+    align-items: center;
+  }
+
+  .div5 {
+    display: flex;
+    background-color:yellow;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    white-space: nowrap;
+    overflow-x: scroll;
   }
 
   #navComponent {
