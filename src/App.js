@@ -1,25 +1,37 @@
-import logo from './logo.svg';
+import React from 'react'
+import {Route, Switch, withRouter} from 'react-router-dom'
+import NavComponent from './Components/NavComponent'
+import SignUpComponent from './Components/SignUpComponent'
+import LogInComponent from './Components/LogInComponent'
+import HomeComponent from './Components/HomeComponent'
+import JournalContainer from './Containers/JournalContainer'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  render () {
+
+    return (
+      <div>
+        <div className="div1">
+          <img alt="Lucidity logo" />
+        </div>
+        <div className="div2">
+          <NavComponent />
+        </div>
+        <div className="div3">
+        </div>
+        <div className="div4">
+          <Switch>
+            <Route path="/login" component={LogInComponent} />
+            <Route path="/signup" component={SignUpComponent} />
+            <Route path="/home" component={HomeComponent} />
+            <Route path="/" component={JournalContainer} />
+          </Switch>
+        </div>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default withRouter(App);
