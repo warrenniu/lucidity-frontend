@@ -1,4 +1,4 @@
-import {GET_JOURNALS, GET_USER, POST_USER, POST_LOGIN} from './actionTypes'
+import {GET_JOURNALS, POST_JOURNALS, GET_USER, POST_USER, POST_LOGIN, POST_DREAM} from './actionTypes'
 
 const BASE_URL = "http://localhost:4000"
 
@@ -13,6 +13,22 @@ export function getJournals() {
 			.then(response => response.json())
 			.then(arrayOfJournals => {
 				dispatch({ type: GET_JOURNALS, payload: arrayOfJournals })
+			})
+	}
+}
+
+export function postJournal(newJournalObj) {
+	return function (dispatch) {
+		fetch(`${BASE_URL}/api/v1/journals`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(newJournalObj),
+		})
+			.then(response => response.json())
+			.then(journalObj => {
+				dispatch({ type: POST_JOURNALS, payload: journalObj })
 			})
 	}
 }
@@ -62,6 +78,22 @@ export function postLogin(userInfo) {
 			.then(response => response.json())
 			.then(data => {
 				dispatch({ type: POST_LOGIN, payload: data })
+			})
+	}
+}
+
+export function postDream(newDreamObj) {
+	return function (dispatch) {
+		fetch(`${BASE_URL}/api/v1/dreams`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(newDreamObj),
+		})
+			.then(response => response.json())
+			.then(dreamObj => {
+				dispatch({ type: POST_DREAM, payload: dreamObj })
 			})
 	}
 }

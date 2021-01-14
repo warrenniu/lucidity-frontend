@@ -1,4 +1,6 @@
 export const GET_JOURNALS = "GET_JOURNALS"
+export const POST_JOURNALS = "POST_JOURNALS"
 export const GET_USER = "GET_USER"
 export const POST_USER = "POST_USER"
 export const POST_LOGIN = "POST_LOGIN"
+export const POST_DREAM = "POST_DREAM"

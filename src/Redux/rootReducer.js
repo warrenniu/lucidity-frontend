@@ -9,6 +9,13 @@ function journalsReducer(prevState = defaultState.journals, action) {
     switch (action.type) {
         case "GET_JOURNALS" :
             return action.payload
+        case "POST_JOURNALS" :
+            return [...prevState, action.payload]
+        case "POST_DREAM" :
+            const addDreamToJournal = prevState.find(journal => journal.id === action.payload.id)
+            // console.log(addDreamToJournal)
+            addDreamToJournal.dreams = [...addDreamToJournal.dreams, action.payload]
+            return [...prevState]
         default :
             return prevState
     }
