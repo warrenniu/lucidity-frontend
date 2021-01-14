@@ -26,6 +26,7 @@ class LogInComponent extends React.Component {
     }
     render() {
     return (
+        <div>
         <div id="signupComponent" style={{
             'border': '2px solid white',
             'borderRadius': '3%',
@@ -43,6 +44,7 @@ class LogInComponent extends React.Component {
 			</Button>
             </form>
         </div>
+        </div>
     )
     }
 }
@@ -55,7 +57,7 @@ function msp(state) {
 
 function mdp(dispatch) {
     return {
-        postLogin: userInfo => dispatch(postLogIn(userInfo))
+        postLogin: userInfo => dispatch(postLogin(userInfo))
     }
 }
 

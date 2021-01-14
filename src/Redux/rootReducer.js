@@ -20,6 +20,8 @@ function userReducer(prevState = defaultState.user, action) {
             return action.payload
         case "POST_USER" :
             return prevState
+        case "POST_LOGIN" :
+            return prevState
         default :
             return prevState
     }
