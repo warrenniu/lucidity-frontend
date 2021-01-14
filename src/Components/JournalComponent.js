@@ -11,3 +11,5 @@ class JournalComponent extends React.Component {
         )
     }
 }
+
+export default JournalComponent

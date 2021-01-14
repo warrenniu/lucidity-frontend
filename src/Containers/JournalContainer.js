@@ -1,19 +1,23 @@
-import React from 'react'  
+import React from 'react'
 import JournalComponent from '../Components/JournalComponent'
 import CreateJournalComponent from '../Components/CreateJournalComponent'
-import {connect} from 'react-redux'
-import {getUser} from '../Redux/actions'
+import { connect } from 'react-redux'
+import { getUser } from '../Redux/actions'
 
 class JournalContainer extends React.Component {
 
-    componentDidMount() {
-        // this.props.getJournals()
-        if (!this.props.user) {
-        this.props.getUser()
-        console.log("in componentDidMount")
-        }
+    // componentDidMount() {
+    //     // this.props.getJournals()
+    //     if (!this.props.user) {
+    //     this.props.getUser()
+    //     console.log("in componentDidMount")
+    //     }
+    // }
+    arrayOfJournals = () => {
+        const sortedUserJournalArray = this.props.user.journals.sort((a, b) => parseFloat(a.year) - parseFloat(b.year))
+        console.log(sortedUserJournalArray)
+        return sortedUserJournalArray.map(journalEl => <JournalComponent key={journalEl.id} journalObj={journalEl} />)
     }
-
 
 
     render() {
@@ -21,8 +25,8 @@ class JournalContainer extends React.Component {
         return (
             <div>
                 <h3>Journal Container</h3>
-                {this.props.user !== null ? this.arrayOfJournals() : null} 
-                {/* {this.arrayOfJournals()} */}
+                {/* {this.props.user !== null ? this.arrayOfJournals() : null} */}
+                {this.arrayOfJournals()}
             </div>
         )
 
@@ -32,7 +36,7 @@ class JournalContainer extends React.Component {
 function msp(state) {
     return {
         user: state.user,
-        // journals: state.journals
+        journals: state.journals
     }
 }
 
