@@ -52,7 +52,8 @@ class CreateDreamComponent extends React.Component {
 
 function msp(state) {
     return {
-        journals: state.journals,
+        user: state.user,
+        journals: state.journals
     }
 }
 

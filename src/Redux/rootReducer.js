@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux'
 
 const defaultState = {
     user: null,
@@ -7,32 +7,33 @@ const defaultState = {
 
 function journalsReducer(prevState = defaultState.journals, action) {
     switch (action.type) {
-        case "GET_JOURNALS" :
+        case "GET_JOURNALS":
             return action.payload
-        case "POST_JOURNALS" :
+        case "POST_JOURNALS":
             return [...prevState, action.payload]
         case "POST_DREAM" :
-            const addDreamToJournal = prevState.find(journal => journal.id === action.payload.journal_id)
-            addDreamToJournal.dreams = [...addDreamToJournal.dreams, action.payload]
-            return [...prevState]
-        case "DELETE_DREAM" :
+        //     const addDreamToJournal = prevState.find(journal => journal.id === action.payload.journal_id)
+        //     addDreamToJournal.dreams = [...addDreamToJournal.dreams, action.payload]
+        //     return [...prevState]
+                return [...prevState, {dreams: [...prevState, action.payload]}]
+        case "DELETE_DREAM":
             const deleteDreamFromJournal = prevState.find(journal => journal.id === action.payload.journal_id)
             deleteDreamFromJournal.dreams = [...deleteDreamFromJournal.dreams.filter(dream => dream.id !== action.payload.id)]
             return [...prevState]
-        default :
+        default:
             return prevState
     }
 }
 
 function userReducer(prevState = defaultState.user, action) {
     switch (action.type) {
-        case "GET_USER" :
+        case "GET_USER":
             return action.payload
-        case "POST_USER" :
+        case "POST_USER":
             return prevState
-        case "POST_LOGIN" :
+        case "POST_LOGIN":
             return prevState
-        default :
+        default:
             return prevState
     }
 }
