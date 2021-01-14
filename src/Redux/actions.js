@@ -1,4 +1,4 @@
-import {GET_JOURNALS, GET_USER} from './actionTypes'
+import {GET_JOURNALS, GET_USER, POST_USER} from './actionTypes'
 
 const BASE_URL = "http://localhost:4000"
 
@@ -28,6 +28,23 @@ export function getUser() {
 			.then(response => response.json())
 			.then(userObj => {
 				dispatch({ type: GET_USER, payload: userObj })
+			})
+	}
+}
+
+export function postUser(newUser) {
+	return function (dispatch) {
+		fetch(`${BASE_URL}/api/v1/users`, {
+			method: 'POST',
+			headers: {
+				accepts: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({user: newUser}),
+		})
+			.then(response => response.json())
+			.then(user => {
+				dispatch({ type: POST_USER, payload: user })
 			})
 	}
 }

@@ -27,7 +27,7 @@ class JournalContainer extends React.Component {
                 <h3>Journal Container</h3>
                 <CreateJournalComponent />
                 {/* {this.props.user ? this.arrayOfJournals() : null}  */}
-                {/* // {this.arrayOfJournals()} */}
+                {/* {this.arrayOfJournals()} */}
             </div>
         )
 

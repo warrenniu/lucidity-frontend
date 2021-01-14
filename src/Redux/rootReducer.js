@@ -9,7 +9,6 @@ function journalsReducer(prevState = defaultState.journals, action) {
     switch (action.type) {
         case "GET_JOURNALS" :
             return action.payload
-        break
         default :
             return prevState
     }
@@ -19,6 +18,8 @@ function userReducer(prevState = defaultState.user, action) {
     switch (action.type) {
         case "GET_USER" :
             return action.payload
+        case "POST_USER" :
+            return prevState
         default :
             return prevState
     }
