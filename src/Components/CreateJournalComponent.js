@@ -10,7 +10,7 @@ class CreateJournalComponent extends React.Component {
 		year: "",
 		month: "",
         user_id: 1
-        //this.props.user.id is returning null. async issue?
+        //this.props.user.id is returning null on first render. async issue?
 	}
 	
 	inputChangeHandler = (event) => {
@@ -42,7 +42,7 @@ class CreateJournalComponent extends React.Component {
 				<form onSubmit={this.formSubmitHandler}>
 					<input className='inputOverride' style={{'marginBottom': '10px'}} type="integer" placeholder="year" name="year" value={this.state.year} onChange={this.inputChangeHandler} /><br />
 					<input className='inputOverride' style={{'marginBottom': '10px'}} type="text" placeholder="month" name="month" value={this.state.month} onChange={this.inputChangeHandler} /><br />
-					<Button variant="contained" color="primary" type="submit">
+					<Button variant="contained" color="secondary" type="submit">
 						Create Journal
 					</Button>
 				</form>

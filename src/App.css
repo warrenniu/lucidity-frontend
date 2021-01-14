@@ -51,6 +51,10 @@
 
   #navComponent {
     color: "black";
+    
+    /* display: inline, */ 
+    /* no effect */
+
   }
 
   .inputOverride:focus {

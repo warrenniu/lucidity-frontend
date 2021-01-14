@@ -34,6 +34,7 @@ export function postJournal(newJournalObj) {
 }
 
 export function getUser() {
+    console.log("before fetch")
 	return function (dispatch) {
 		fetch(`${BASE_URL}/api/v1/users/1`, {
 			method: 'GET',
@@ -43,7 +44,8 @@ export function getUser() {
 		})
 			.then(response => response.json())
 			.then(userObj => {
-				dispatch({ type: GET_USER, payload: userObj })
+                dispatch({ type: GET_USER, payload: userObj })
+                console.log("After Fetch")
 			})
 	}
 }
@@ -96,4 +98,16 @@ export function postDream(newDreamObj) {
 				dispatch({ type: POST_DREAM, payload: dreamObj })
 			})
 	}
+}
+
+export function deleteDream(dreamObj) {
+    return function (dispatch) {
+        fetch(`${BASE_URL}/api/v1/cards/${dreamObj.id}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+			}
+        })
+        
+    }
 }

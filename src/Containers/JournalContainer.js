@@ -12,6 +12,7 @@ class JournalContainer extends React.Component {
         // this.props.getJournals()
         if (!this.props.user) {
         this.props.getUser()
+        console.log("in componentDidMount")
         }
     }
 
@@ -26,7 +27,7 @@ class JournalContainer extends React.Component {
             <div>
                 <h3>Journal Container</h3>
                 <CreateJournalComponent />
-                {/* {this.props.user ? this.arrayOfJournals() : null}  */}
+                {this.props.user !== null ? this.arrayOfJournals() : null} 
                 {/* {this.arrayOfJournals()} */}
             </div>
         )

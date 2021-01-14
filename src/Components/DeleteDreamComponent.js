@@ -1,13 +1,35 @@
-import React from 'react' 
+import React from 'react'
+import { connect } from 'react-redux'
+import { deleteCard } from '../Redux/actions'
+import { withRouter } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
 
-class DeleteDreamComponent extends React.Component {
-    render () {
-        return (
-            <div>
-                <h3>Delete Dream Component</h3>
-            </div>
-        )
+function DeleteDreamComponent(props) {
+
+    clickHandler = () => {
+        props.deleteCard(props.currentDream)
+        props.history.push('/journals')
+    }
+
+    return (
+        <div>
+            <Button style={{ 'marginRight': '10px' }} variant="contained" color="secondary" onClick={() => clickHandler()}>
+                Delete Card
+		    </Button>
+        </div>
+    )
+}
+
+function msp(state) {
+    return {
+        journals: state.journals
     }
 }
 
-export default DeleteDreamComponent
+function mdp(dispatch) {
+    return {
+        deleteDream: dreamObj => dispatch(deleteDream(dreamObj))
+    }
+}
+
+export default connect(msp, mdp)(withRouter(DeleteDreamComponent))
