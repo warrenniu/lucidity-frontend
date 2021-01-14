@@ -1,10 +1,8 @@
-import React from 'react'
-import JournalComponent from '../Containers/JournalContainer'
+import React from 'react'  
+import JournalComponent from '../Components/JournalComponent'
 import CreateJournalComponent from '../Components/CreateJournalComponent'
 import {connect} from 'react-redux'
-// import {getJournals} from '../Redux/actions'
 import {getUser} from '../Redux/actions'
-
 
 class JournalContainer extends React.Component {
 
@@ -16,17 +14,13 @@ class JournalContainer extends React.Component {
         }
     }
 
-    arrayOfJournals = () => {
-        const sortedUserJournalArray = this.props.user.journals.sort((a,b) => parseFloat(a.year) - parseFloat(b.year))
-        console.log(sortedUserJournalArray)
-        return sortedUserJournalArray.map(journalEl => <JournalComponent key={journalEl.id} journalObj={journalEl} />)
-    }
+
+
     render() {
         console.log(this.props.user)
         return (
             <div>
                 <h3>Journal Container</h3>
-                <CreateJournalComponent />
                 {this.props.user !== null ? this.arrayOfJournals() : null} 
                 {/* {this.arrayOfJournals()} */}
             </div>
@@ -38,7 +32,7 @@ class JournalContainer extends React.Component {
 function msp(state) {
     return {
         user: state.user,
-        journals: state.journals
+        // journals: state.journals
     }
 }
 

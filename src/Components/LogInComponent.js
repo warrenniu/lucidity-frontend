@@ -35,7 +35,7 @@ class LogInComponent extends React.Component {
             'padding': '15px',
             'textAlign': 'center',
         }}>
-            <h3>Sign Up Component</h3>
+            <h3>Log In Component</h3>
             <form onSubmit={this.submitHandler}>
             <input className='inputOverride' style={{'marginBottom': '10px'}} type="text" name="username" placeholder="username" value={this.state.username} onChange={this.changeHandler} /><br />
             <input className='inputOverride' style={{'marginBottom': '10px'}} type="password" name="password" placeholder="password" value={this.state.password} onChange={this.changeHandler} /><br />

@@ -7,7 +7,7 @@ class NavComponent extends React.Component {
         return (
             <div id="navComponent">
                 <div>
-                <Button style={{ 'fontSize': '20px' }} color="primary" component={RouterLink} to="/home">
+                    <Button style={{ 'fontSize': '20px' }} color="primary" component={RouterLink} to="/home">
                         Home
 				</Button><br />
 
@@ -21,6 +21,10 @@ class NavComponent extends React.Component {
 
                     <Button style={{ 'fontSize': '20px' }} color="primary" component={RouterLink} to="/login">
                         Log In
+				</Button><br />
+
+                    <Button style={{ 'fontSize': '20px' }} color="primary" component={RouterLink} to="/signup">
+                        Sign Up
 				</Button><br />
 
                 </div>

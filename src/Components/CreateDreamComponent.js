@@ -1,6 +1,6 @@
 import React from 'react' 
 import {connect} from 'react-redux' 
-import {postDream} from '..Redux/actions' 
+import {postDream} from '../Redux/actions' 
 import {withRouter} from 'react-router-dom' 
 import Button from '@material-ui/core/Button' 
 

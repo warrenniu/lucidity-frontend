@@ -8,7 +8,7 @@ class DreamComponent extends React.Component {
             <div>
             <h3>DreamComponent</h3>
             <EditDreamComponent />
-            <DeleteDreamComponent currentCard={this.props.dreamObj}/>
+            <DeleteDreamComponent currentDream={this.props.dreamObj}/>
             </div>
         )
     }

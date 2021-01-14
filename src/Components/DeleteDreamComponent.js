@@ -1,20 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { deleteCard } from '../Redux/actions'
+import { deleteDream } from '../Redux/actions'
 import { withRouter } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 
 function DeleteDreamComponent(props) {
 
     clickHandler = () => {
-        props.deleteCard(props.currentDream)
+        props.deleteDream(props.currentDream)
         props.history.push('/journals')
     }
 
     return (
         <div>
             <Button style={{ 'marginRight': '10px' }} variant="contained" color="secondary" onClick={() => clickHandler()}>
-                Delete Card
+                Delete Dream
 		    </Button>
         </div>
     )
