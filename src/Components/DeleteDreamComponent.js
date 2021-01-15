@@ -6,9 +6,9 @@ import Button from '@material-ui/core/Button'
 
 function DeleteDreamComponent(props) {
 
-    clickHandler = () => {
+    const clickHandler = () => {
         props.deleteDream(props.currentDream)
-        props.history.push('/journals')
+        props.history.push('/')
     }
 
     return (

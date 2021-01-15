@@ -3,29 +3,27 @@ import JournalComponent from '../Components/JournalComponent'
 import CreateJournalComponent from '../Components/CreateJournalComponent'
 import { connect } from 'react-redux'
 import { getUser } from '../Redux/actions'
+import { getJournals } from '../Redux/actions'
 
 class JournalContainer extends React.Component {
 
-    // componentDidMount() {
-    //     // this.props.getJournals()
-    //     if (!this.props.user) {
-    //     this.props.getUser()
-    //     console.log("in componentDidMount")
-    //     }
-    // }
+    componentDidMount() {
+        this.props.getJournals()
+    }
     arrayOfJournals = () => {
-        const sortedUserJournalArray = this.props.user.journals.sort((a, b) => parseFloat(a.year) - parseFloat(b.year))
-        console.log(sortedUserJournalArray)
-        return sortedUserJournalArray.map(journalEl => <JournalComponent key={journalEl.id} journalObj={journalEl} />)
+        let journalArray = this.props.journals
+        journalArray = journalArray.filter(journal => journal.user_id === this.props.user.id)
+        journalArray = journalArray.sort((a, b) => parseFloat(a.year) - parseFloat(b.year))
+        return journalArray.map(journalEl => <JournalComponent key={journalEl.id} journalObj={journalEl} />)
     }
 
 
     render() {
-        console.log(this.props.user)
+        console.log("Journals from redux state", this.props.journals)
         return (
             <div>
                 <h3>Journal Container</h3>
-                {/* {this.props.user !== null ? this.arrayOfJournals() : null} */}
+                <CreateJournalComponent />
                 {this.arrayOfJournals()}
             </div>
         )
@@ -42,7 +40,7 @@ function msp(state) {
 
 function mdp(dispatch) {
     return {
-        // getJournals: () => dispatch(getJournals()),
+        getJournals: () => dispatch(getJournals()),
         getUser: () => dispatch(getUser())
     }
 }

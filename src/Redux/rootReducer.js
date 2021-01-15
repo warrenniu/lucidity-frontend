@@ -2,24 +2,28 @@ import { combineReducers } from 'redux'
 
 const defaultState = {
     user: null,
-    journals: []
+    journals: [],
+    dreams: []
 }
 
 function journalsReducer(prevState = defaultState.journals, action) {
     switch (action.type) {
         case "GET_JOURNALS":
             return action.payload
-        case "POST_JOURNALS":
+        case "POST_JOURNAL":
             return [...prevState, action.payload]
-        case "POST_DREAM" :
-        //     const addDreamToJournal = prevState.find(journal => journal.id === action.payload.journal_id)
-        //     addDreamToJournal.dreams = [...addDreamToJournal.dreams, action.payload]
+        // case "POST_DREAM" :
+        // //     const addDreamToJournal = prevState.find(journal => journal.id === action.payload.journal_id)
+        // //     addDreamToJournal.dreams = [...addDreamToJournal.dreams, action.payload]
+        // //     return [...prevState]
+        //         return [...prevState, {dreams: [...prevState, action.payload]}]
+        // case "DELETE_DREAM":
+        //     // const deleteDreamFromJournal = prevState.find(journal => journal.id === action.payload.journal_id)
+        //     // deleteDreamFromJournal.dreams = [...deleteDreamFromJournal.dreams.filter(dream => dream.id !== action.payload.id)]
+        //     // return [...prevState]
+        //     console.log("In journal reducer", prevState)
+        //     // prevState.filter(journal => journal.dream.id !== action.payload.id)
         //     return [...prevState]
-                return [...prevState, {dreams: [...prevState, action.payload]}]
-        case "DELETE_DREAM":
-            const deleteDreamFromJournal = prevState.find(journal => journal.id === action.payload.journal_id)
-            deleteDreamFromJournal.dreams = [...deleteDreamFromJournal.dreams.filter(dream => dream.id !== action.payload.id)]
-            return [...prevState]
         default:
             return prevState
     }
@@ -38,9 +42,27 @@ function userReducer(prevState = defaultState.user, action) {
     }
 }
 
+function dreamsReducer(prevState = defaultState.dreams, action) {
+    switch (action.type) {
+        case "GET_DREAMS":
+            return action.payload
+        case "POST_DREAM" :
+        //     const addDreamToJournal = prevState.find(journal => journal.id === action.payload.journal_id)
+        //     addDreamToJournal.dreams = [...addDreamToJournal.dreams, action.payload]
+        //     return [...prevState]
+                return [...prevState, action.payload]
+        case "DELETE_DREAM":
+            return prevState.filter(dream => dream.id !== action.payload.id)
+
+        default: 
+            return prevState
+    }
+}
+
 const rootReducer = combineReducers({
     user: userReducer,
-    journals: journalsReducer
+    journals: journalsReducer,
+    dreams: dreamsReducer
 })
 
 export default rootReducer

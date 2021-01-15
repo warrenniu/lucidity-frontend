@@ -1,4 +1,4 @@
-import { GET_JOURNALS, POST_JOURNALS, GET_USER, POST_USER, POST_LOGIN, POST_DREAM, DELETE_DREAM } from './actionTypes'
+import { GET_JOURNALS, POST_JOURNAL, GET_USER, POST_USER, POST_LOGIN, POST_DREAM, GET_DREAMS, DELETE_DREAM } from './actionTypes'
 
 const BASE_URL = "http://localhost:4000"
 
@@ -28,7 +28,7 @@ export function postJournal(newJournalObj) {
         })
             .then(response => response.json())
             .then(journalObj => {
-                dispatch({ type: POST_JOURNALS, payload: journalObj })
+                dispatch({ type: POST_JOURNAL, payload: journalObj })
             })
     }
 }
@@ -84,6 +84,21 @@ export function postLogin(userInfo) {
     }
 }
 
+export function getDreams() {
+    return function (dispatch) {
+        fetch(`${BASE_URL}/api/v1/dreams`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => response.json())
+            .then(arrayOfDreams => {
+                dispatch({ type: GET_DREAMS, payload: arrayOfDreams })
+            })
+    }
+}
+
 export function postDream(newDreamObj) {
     return function (dispatch) {
         fetch(`${BASE_URL}/api/v1/dreams`, {
@@ -102,7 +117,7 @@ export function postDream(newDreamObj) {
 
 export function deleteDream(dreamObj) {
     return function (dispatch) {
-        fetch(`${BASE_URL}/api/v1/cards/${dreamObj.id}`, {
+        fetch(`${BASE_URL}/api/v1/dreams/${dreamObj.id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

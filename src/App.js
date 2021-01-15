@@ -4,6 +4,7 @@ import NavComponent from './Components/NavComponent'
 import SignUpComponent from './Components/SignUpComponent'
 import LogInComponent from './Components/LogInComponent'
 import HomeComponent from './Components/HomeComponent'
+import JournalContainer from './Containers/JournalContainer'
 import MainContainer from './Containers/MainContainer'
 // import {connect} from 'react-redux'
 // import {getUser} from './Redux/actions'
@@ -12,13 +13,18 @@ import './App.css';
 class App extends React.Component {
 
 //   componentDidMount() {
+//     // this.props.getJournals()
+//     if (!this.props.user) {
 //     this.props.getUser()
+//     console.log("in componentDidMount")
+//     }
 // }
 
   render() {
 
     return (
       <div>
+        {/* {this.props.user !== null ? <JournalContainer /> : null}  */}
         <div className="div1">
           <img alt="Lucidity logo" />
         </div>
@@ -32,6 +38,7 @@ class App extends React.Component {
             <Route path="/login" component={LogInComponent} />
             <Route path="/signup" component={SignUpComponent} />
             <Route path="/home" component={HomeComponent} />
+            <Route path="/journals" exact component={JournalContainer} />
             <Route path="/" component={MainContainer} />
           </Switch>
         </div>
@@ -53,8 +60,9 @@ class App extends React.Component {
 
 // function mdp(dispatch) {
 //   return {
+//       // getJournals: () => dispatch(getJournals()),
 //       getUser: () => dispatch(getUser())
 //   }
 // }
 
-export default App;
+export default (withRouter(App));
