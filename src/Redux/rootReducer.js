@@ -12,18 +12,8 @@ function journalsReducer(prevState = defaultState.journals, action) {
             return action.payload
         case "POST_JOURNAL":
             return [...prevState, action.payload]
-        // case "POST_DREAM" :
-        // //     const addDreamToJournal = prevState.find(journal => journal.id === action.payload.journal_id)
-        // //     addDreamToJournal.dreams = [...addDreamToJournal.dreams, action.payload]
-        // //     return [...prevState]
-        //         return [...prevState, {dreams: [...prevState, action.payload]}]
-        // case "DELETE_DREAM":
-        //     // const deleteDreamFromJournal = prevState.find(journal => journal.id === action.payload.journal_id)
-        //     // deleteDreamFromJournal.dreams = [...deleteDreamFromJournal.dreams.filter(dream => dream.id !== action.payload.id)]
-        //     // return [...prevState]
-        //     console.log("In journal reducer", prevState)
-        //     // prevState.filter(journal => journal.dream.id !== action.payload.id)
-        //     return [...prevState]
+        case "DELETE_JOURNAL" :
+            prevState.filter(journalEl => journalEl.id !== action.payload.id)
         default:
             return prevState
     }

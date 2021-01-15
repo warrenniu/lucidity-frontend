@@ -1,4 +1,4 @@
-import { GET_JOURNALS, POST_JOURNAL, GET_USER, POST_USER, POST_LOGIN, POST_DREAM, GET_DREAMS, DELETE_DREAM } from './actionTypes'
+import { GET_JOURNALS, POST_JOURNAL, DELETE_JOURNAL, GET_USER, POST_USER, POST_LOGIN, POST_DREAM, GET_DREAMS, DELETE_DREAM } from './actionTypes'
 
 const BASE_URL = "http://localhost:4000"
 
@@ -30,6 +30,22 @@ export function postJournal(newJournalObj) {
             .then(journalObj => {
                 dispatch({ type: POST_JOURNAL, payload: journalObj })
             })
+    }
+}
+
+export function deleteJournal(journalObj) {
+    return function (dispatch) {
+        fetch(`${BASE_URL}/api/v1/journals/${journalObj.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                dispatch({ type: DELETE_JOURNAL, payload: journalObj })
+            })
+
     }
 }
 
