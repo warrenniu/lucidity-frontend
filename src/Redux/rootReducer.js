@@ -41,6 +41,11 @@ function dreamsReducer(prevState = defaultState.dreams, action) {
             //     addDreamToJournal.dreams = [...addDreamToJournal.dreams, action.payload]
             //     return [...prevState]
             return [...prevState, action.payload]
+        case "PATCH_DREAM":
+            let newDreamArray = [...prevState]
+            let index = newDreamArray.findIndex(dream => dream.id === action.payload.id)
+            newDreamArray[index] = action.payload
+            return newDreamArray
         case "DELETE_DREAM":
             return prevState.filter(dream => dream.id !== action.payload.id)
 
