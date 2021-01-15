@@ -9,6 +9,7 @@ class JournalContainer extends React.Component {
 
     componentDidMount() {
         this.props.getJournals()
+        this.props.getUser()
     }
     arrayOfJournals = () => {
         let journalArray = this.props.journals
@@ -24,7 +25,7 @@ class JournalContainer extends React.Component {
             <div>
                 <h3>Journal Container</h3>
                 <CreateJournalComponent />
-                {this.arrayOfJournals()}
+                {this.props.user ? this.arrayOfJournals() : null }
             </div>
         )
 
