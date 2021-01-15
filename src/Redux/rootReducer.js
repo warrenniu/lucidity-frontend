@@ -46,15 +46,15 @@ function dreamsReducer(prevState = defaultState.dreams, action) {
     switch (action.type) {
         case "GET_DREAMS":
             return action.payload
-        case "POST_DREAM" :
-        //     const addDreamToJournal = prevState.find(journal => journal.id === action.payload.journal_id)
-        //     addDreamToJournal.dreams = [...addDreamToJournal.dreams, action.payload]
-        //     return [...prevState]
-                return [...prevState, action.payload]
+        case "POST_DREAM":
+            //     const addDreamToJournal = prevState.find(journal => journal.id === action.payload.journal_id)
+            //     addDreamToJournal.dreams = [...addDreamToJournal.dreams, action.payload]
+            //     return [...prevState]
+            return [...prevState, action.payload]
         case "DELETE_DREAM":
             return prevState.filter(dream => dream.id !== action.payload.id)
 
-        default: 
+        default:
             return prevState
     }
 }

@@ -15,7 +15,7 @@ class CreateDreamComponent extends React.Component {
         place: "",
         action: "",
         image: "",
-        journal_id: 1
+        journal_id: this.props.journalId
 
     }
     inputChangeHandler = (event) => {
@@ -41,7 +41,7 @@ class CreateDreamComponent extends React.Component {
                     <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Place" name="place" value={this.state.place} onChange={this.inputChangeHandler} />
                     <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Action" name="action" value={this.state.action} onChange={this.inputChangeHandler} />
                     <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Image" name="image" value={this.state.image} onChange={this.inputChangeHandler} />
-                    <Button variant="contained" color="primary" type="submit">
+                    <Button variant="contained" color="secondary" type="submit">
                         Add Dream
 					</Button>
                 </form>

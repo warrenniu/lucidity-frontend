@@ -9,13 +9,13 @@ class DreamContainer extends React.Component {
         this.props.getDreams()
     }
 
-     arrayOfDreams = () => {
-         let dreamArray = this.props.dreams.filter(dream => dream.journal_id === this.props.journalId)
+    arrayOfDreams = () => {
+        let dreamArray = this.props.dreams.filter(dream => dream.journal_id === this.props.journalId)
         dreamArray = dreamArray.sort((a, b) => parseFloat(a.id) - parseFloat(b.id))
         return dreamArray.map(dreamEl => <DreamComponent key={dreamEl.id} dreamObj={dreamEl} />)
     }
 
-    render () {
+    render() {
         // console.log("In Dream Container", this.props.dreams)
         return (
             <div>

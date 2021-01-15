@@ -1,7 +1,7 @@
-import React from 'react' 
-import {connect} from 'react-redux' 
-import {patchDream} from '../Redux/actions'
-import {withRouter} from 'react-router-dom'
+import React from 'react'
+import { connect } from 'react-redux'
+import { patchDream } from '../Redux/actions'
+import { withRouter } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 
 class EditDreamComponent extends React.Component {
@@ -17,7 +17,7 @@ class EditDreamComponent extends React.Component {
         image: this.props.currentDream.image,
         id: this.props.currentDream.id
     }
-    render () {
+    render() {
         return (
             <div>
                 <h3>Edit Dream Component</h3>
