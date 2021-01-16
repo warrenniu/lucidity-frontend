@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 class NavComponent extends React.Component {
     render() {
         return (
-            <div id="navComponent">
+            <div>
                 <div>
                     <Button style={{ 'fontSize': '20px' }} color="primary" component={RouterLink} to="/home">
                         Home

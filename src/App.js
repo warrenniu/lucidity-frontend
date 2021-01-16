@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import NavComponent from './Components/NavComponent'
+// import Material from './Components/NavComponent'
 import SignUpComponent from './Components/SignUpComponent'
 import LogInComponent from './Components/LogInComponent'
 import HomeComponent from './Components/HomeComponent'
@@ -23,7 +24,7 @@ class App extends React.Component {
   render() {
 
     return (
-      <div>
+      <div className="parent">
         {/* {this.props.user !== null ? <JournalContainer /> : null}  */}
         <div className="div1">
           <img alt="Lucidity logo" />
