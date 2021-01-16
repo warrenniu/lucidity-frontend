@@ -13,7 +13,7 @@ function journalsReducer(prevState = defaultState.journals, action) {
         case "POST_JOURNAL":
             return [...prevState, action.payload]
         case "DELETE_JOURNAL" :
-            prevState.filter(journalEl => journalEl.id !== action.payload.id)
+            return prevState.filter(journalEl => journalEl.id !== action.payload.id)
         default:
             return prevState
     }
