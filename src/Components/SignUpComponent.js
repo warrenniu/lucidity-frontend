@@ -34,7 +34,7 @@ class SignUpComponent extends React.Component {
                 'padding': '15px',
                 'textAlign': 'center',
             }}>
-                <h3>Sign Up Component</h3>
+                <h3>Capture your Dreams</h3>
                 <form onSubmit={this.submitHandler}>
                     <input className='inputOverride' style={{ 'marginBottom': '10px' }} type="text" name="username" placeholder="username" value={this.state.username} onChange={this.changeHandler} /><br />
                     <input className='inputOverride' style={{ 'marginBottom': '10px' }} type="password" name="password" placeholder="password" value={this.state.password} onChange={this.changeHandler} /><br />
@@ -43,7 +43,7 @@ class SignUpComponent extends React.Component {
                     <input className='inputOverride' style={{ 'marginBottom': '10px' }} type="text" name="birthday" placeholder="Birthday (Ex. September 22 1988)" value={this.state.birthday} onChange={this.changeHandler} /><br />
                     <Button variant="contained" color="secondary" type="submit">
                         Sign Up
-			</Button>
+			        </Button>
                 </form>
             </div>
         )

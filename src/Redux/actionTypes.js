@@ -1,5 +1,6 @@
 export const GET_JOURNALS = "GET_JOURNALS"
 export const POST_JOURNAL = "POST_JOURNALS"
+export const PATCH_JOURNAL = "PATCH_JOURNAL"
 export const DELETE_JOURNAL = "DELETE_JOURNAL"
 export const GET_USER = "GET_USER"
 export const POST_USER = "POST_USER"

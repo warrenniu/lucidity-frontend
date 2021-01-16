@@ -12,6 +12,11 @@ function journalsReducer(prevState = defaultState.journals, action) {
             return action.payload
         case "POST_JOURNAL":
             return [...prevState, action.payload]
+        case "PATCH_JOURNAL":
+            let newJournalArray = [...prevState]
+            let index = newJournalArray.findIndex(journal => journal.id === action.payload.id)
+            newJournalArray[index] = action.payload
+            return newJournalArray
         case "DELETE_JOURNAL" :
             return prevState.filter(journalEl => journalEl.id !== action.payload.id)
         default:

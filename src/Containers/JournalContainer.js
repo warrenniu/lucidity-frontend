@@ -14,7 +14,7 @@ class JournalContainer extends React.Component {
     arrayOfJournals = () => {
         let journalArray = this.props.journals
         journalArray = journalArray.filter(journal => journal.user_id === this.props.user.id)
-        journalArray = journalArray.sort((a, b) => parseFloat(a.year) - parseFloat(b.year))
+        journalArray = journalArray.sort((a, b) => parseFloat(b.year) - parseFloat(a.year))
         return journalArray.map(journalEl => <JournalComponent key={journalEl.id} journalObj={journalEl} />)
     }
 

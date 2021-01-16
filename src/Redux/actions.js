@@ -1,4 +1,4 @@
-import { GET_JOURNALS, POST_JOURNAL, DELETE_JOURNAL, GET_USER, POST_USER, POST_LOGIN, POST_DREAM, GET_DREAMS, PATCH_DREAM, DELETE_DREAM } from './actionTypes'
+import { GET_JOURNALS, POST_JOURNAL, PATCH_JOURNAL, DELETE_JOURNAL, GET_USER, POST_USER, POST_LOGIN, POST_DREAM, GET_DREAMS, PATCH_DREAM, DELETE_DREAM } from './actionTypes'
 
 const BASE_URL = "http://localhost:4000"
 
@@ -31,6 +31,22 @@ export function postJournal(newJournalObj) {
                 dispatch({ type: POST_JOURNAL, payload: journalObj })
             })
     }
+}
+
+export function patchJournal(updatedJournalObj) {
+	return function (dispatch) {
+		fetch(`${BASE_URL}/api/v1/journals/${updatedJournalObj.id}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(updatedJournalObj),
+		})
+			.then(response => response.json())
+			.then(journalObj => {
+				dispatch({ type: PATCH_JOURNAL, payload: journalObj })
+			})
+	}
 }
 
 export function deleteJournal(journalObj) {
