@@ -23,9 +23,10 @@
 
   .div2 {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content:flex-end;
+    align-items: flex-end;
     background-color: orange;
-    align-items: center;
   }
   .div3 {
     display: flex;
@@ -59,7 +60,12 @@
     /* display: inline, */ 
     /* no effect */
 
-  /* } */ */
+  /* } */ 
+
+  #signupComponent {
+    margin-top: 50px;
+    /* margin-bottom: 100px;	 */
+  }
 
   .inputOverride:focus {
     border-color: #000;
