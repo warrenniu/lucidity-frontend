@@ -27,7 +27,7 @@ class App extends React.Component {
       <div className="parent">
         {/* {this.props.user !== null ? <JournalContainer /> : null}  */}
         <div className="div1">
-          <img alt="Lucidity logo" />
+          <img src="/Lucidity Wordmark.png" alt="Lucidity logo" />
         </div>
         <div className="div2">
           <NavComponent />
