@@ -9,11 +9,12 @@ class JournalContainer extends React.Component {
 
     componentDidMount() {
         this.props.getJournals()
+        this.props.getUser()
     }
     arrayOfJournals = () => {
         let journalArray = this.props.journals
         journalArray = journalArray.filter(journal => journal.user_id === this.props.user.id)
-        journalArray = journalArray.sort((a, b) => parseFloat(a.year) - parseFloat(b.year))
+        journalArray = journalArray.sort((a, b) => parseFloat(b.year) - parseFloat(a.year))
         return journalArray.map(journalEl => <JournalComponent key={journalEl.id} journalObj={journalEl} />)
     }
 
@@ -24,7 +25,7 @@ class JournalContainer extends React.Component {
             <div>
                 <h3>Journal Container</h3>
                 <CreateJournalComponent />
-                {this.arrayOfJournals()}
+                {this.props.user ? this.arrayOfJournals() : null }
             </div>
         )
 

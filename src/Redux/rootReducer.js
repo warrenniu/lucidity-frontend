@@ -12,18 +12,13 @@ function journalsReducer(prevState = defaultState.journals, action) {
             return action.payload
         case "POST_JOURNAL":
             return [...prevState, action.payload]
-        // case "POST_DREAM" :
-        // //     const addDreamToJournal = prevState.find(journal => journal.id === action.payload.journal_id)
-        // //     addDreamToJournal.dreams = [...addDreamToJournal.dreams, action.payload]
-        // //     return [...prevState]
-        //         return [...prevState, {dreams: [...prevState, action.payload]}]
-        // case "DELETE_DREAM":
-        //     // const deleteDreamFromJournal = prevState.find(journal => journal.id === action.payload.journal_id)
-        //     // deleteDreamFromJournal.dreams = [...deleteDreamFromJournal.dreams.filter(dream => dream.id !== action.payload.id)]
-        //     // return [...prevState]
-        //     console.log("In journal reducer", prevState)
-        //     // prevState.filter(journal => journal.dream.id !== action.payload.id)
-        //     return [...prevState]
+        case "PATCH_JOURNAL":
+            let newJournalArray = [...prevState]
+            let index = newJournalArray.findIndex(journal => journal.id === action.payload.id)
+            newJournalArray[index] = action.payload
+            return newJournalArray
+        case "DELETE_JOURNAL" :
+            return prevState.filter(journalEl => journalEl.id !== action.payload.id)
         default:
             return prevState
     }
@@ -51,6 +46,11 @@ function dreamsReducer(prevState = defaultState.dreams, action) {
             //     addDreamToJournal.dreams = [...addDreamToJournal.dreams, action.payload]
             //     return [...prevState]
             return [...prevState, action.payload]
+        case "PATCH_DREAM":
+            let newDreamArray = [...prevState]
+            let index = newDreamArray.findIndex(dream => dream.id === action.payload.id)
+            newDreamArray[index] = action.payload
+            return newDreamArray
         case "DELETE_DREAM":
             return prevState.filter(dream => dream.id !== action.payload.id)
 

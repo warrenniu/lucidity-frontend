@@ -16,7 +16,6 @@ class DreamContainer extends React.Component {
     }
 
     render() {
-        // console.log("In Dream Container", this.props.dreams)
         return (
             <div>
                 {this.arrayOfDreams()}

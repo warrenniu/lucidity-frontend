@@ -1,35 +1,37 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { deleteDream } from '../Redux/actions'
+import React from 'react' 
+import { connect } from 'react-redux' 
+import { deleteJournal } from '../Redux/actions'
 import { withRouter } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 
-function DeleteDreamComponent(props) {
+function DeleteJournalComponent(props) {
 
     const clickHandler = () => {
-        props.deleteDream(props.currentDream)
+        props.deleteJournal(props.currentJournal)
         props.history.push('/journals')
     }
 
     return (
         <div>
             <Button style={{ 'marginRight': '10px' }} variant="contained" color="secondary" onClick={() => clickHandler()}>
-                Delete Dream
+                Delete Journal
 		    </Button>
+
         </div>
     )
 }
 
 function msp(state) {
     return {
+        user: state.user,
         journals: state.journals
     }
 }
 
 function mdp(dispatch) {
     return {
-        deleteDream: dreamObj => dispatch(deleteDream(dreamObj))
+        deleteJournal: journalObj => dispatch(deleteJournal(journalObj))
     }
 }
 
-export default connect(msp, mdp)(withRouter(DeleteDreamComponent))
+export default connect(msp, mdp)(withRouter(DeleteJournalComponent))

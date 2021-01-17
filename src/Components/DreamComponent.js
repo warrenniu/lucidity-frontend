@@ -8,7 +8,15 @@ class DreamComponent extends React.Component {
         return (
             <div>
                 <h3>DreamComponent</h3>
-                {/* {this.props.dreamObj.title} */}
+                <h3>Title: {this.props.dreamObj.title}</h3>
+                <p>Rating: {this.props.dreamObj.rating}</p>
+                <p>Date: {this.props.dreamObj.date}</p>
+                <p>Story: {this.props.dreamObj.story}</p>
+                <p>Characters: {this.props.dreamObj.character}</p>
+                <p>Places: {this.props.dreamObj.place}</p>
+                <p>Actions: {this.props.dreamObj.action}</p>
+                <p>Image: {this.props.dreamObj.image}</p>
+                
                 <EditDreamComponent currentDream={this.props.dreamObj} />
                 <DeleteDreamComponent currentDream={this.props.dreamObj} />
             </div>

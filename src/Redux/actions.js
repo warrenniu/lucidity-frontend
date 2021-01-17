@@ -1,4 +1,4 @@
-import { GET_JOURNALS, POST_JOURNAL, GET_USER, POST_USER, POST_LOGIN, POST_DREAM, GET_DREAMS, DELETE_DREAM } from './actionTypes'
+import { GET_JOURNALS, POST_JOURNAL, PATCH_JOURNAL, DELETE_JOURNAL, GET_USER, POST_USER, POST_LOGIN, POST_DREAM, GET_DREAMS, PATCH_DREAM, DELETE_DREAM } from './actionTypes'
 
 const BASE_URL = "http://localhost:4000"
 
@@ -30,6 +30,38 @@ export function postJournal(newJournalObj) {
             .then(journalObj => {
                 dispatch({ type: POST_JOURNAL, payload: journalObj })
             })
+    }
+}
+
+export function patchJournal(updatedJournalObj) {
+	return function (dispatch) {
+		fetch(`${BASE_URL}/api/v1/journals/${updatedJournalObj.id}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(updatedJournalObj),
+		})
+			.then(response => response.json())
+			.then(journalObj => {
+				dispatch({ type: PATCH_JOURNAL, payload: journalObj })
+			})
+	}
+}
+
+export function deleteJournal(journalObj) {
+    return function (dispatch) {
+        fetch(`${BASE_URL}/api/v1/journals/${journalObj.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                dispatch({ type: DELETE_JOURNAL, payload: journalObj })
+            })
+
     }
 }
 
@@ -113,6 +145,22 @@ export function postDream(newDreamObj) {
                 dispatch({ type: POST_DREAM, payload: dreamObj })
             })
     }
+}
+
+export function patchDream(updatedDreamObj) {
+	return function (dispatch) {
+		fetch(`${BASE_URL}/api/v1/dreams/${updatedDreamObj.id}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(updatedDreamObj),
+		})
+			.then(response => response.json())
+			.then(dreamObj => {
+				dispatch({ type: PATCH_DREAM, payload: dreamObj })
+			})
+	}
 }
 
 export function deleteDream(dreamObj) {
