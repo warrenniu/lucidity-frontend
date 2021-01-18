@@ -12,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button'
+import TransitionsModal from './TransitionsModal'
 // import image from '../Images/cocktail.jpeg'
 
 
@@ -52,7 +53,7 @@ class DreamComponent extends React.Component {
                     'padding': '15px',
                     'textAlign': 'center',
                 }}>
-                <Card className="dreamCard">
+                <Card variant="outlined" className="dreamCard">
                     <CardHeader
                         action={
                             <IconButton aria-label="settings">
@@ -71,19 +72,10 @@ class DreamComponent extends React.Component {
 
                         </Typography>
                     </CardContent>
-                    <CardActions>
-                        <Button size="small">Explore</Button>
-                    </CardActions>
-
-
-                    <p>Story: {this.props.dreamObj.story}</p>
-                    <p>Characters: {this.props.dreamObj.character}</p>
-                    <p>Places: {this.props.dreamObj.place}</p>
-                    <p>Actions: {this.props.dreamObj.action}</p>
-
+            
+                    <TransitionsModal currentDream={this.props.dreamObj} />
                 </Card>
                 </div>
-
                 <EditDreamComponent currentDream={this.props.dreamObj} />
                 <DeleteDreamComponent currentDream={this.props.dreamObj} />
             </div>
