@@ -66,7 +66,6 @@ export function deleteJournal(journalObj) {
 }
 
 export function getUser() {
-    console.log("before fetch")
     return function (dispatch) {
         fetch(`${BASE_URL}/api/v1/users/1`, {
             method: 'GET',
@@ -77,7 +76,6 @@ export function getUser() {
             .then(response => response.json())
             .then(userObj => {
                 dispatch({ type: GET_USER, payload: userObj })
-                console.log("After Fetch")
             })
     }
 }

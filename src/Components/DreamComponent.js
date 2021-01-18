@@ -1,6 +1,6 @@
 import React from 'react'
 import EditDreamComponent from './EditDreamComponent'
-import DeleteDreamComponent from './DeleteDreamComponent'
+// import DeleteDreamComponent from './DeleteDreamComponent'
 // import { makeStyles } from '@material-ui/core/styles';
 // import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button'
 import MediaCard from './MediaCard'
-import TransitionsModal from './TransitionsModal'
+import TransitionsModal from './CardDetailModal'
 // import image from '../Images/cocktail.jpeg'
 
 class DreamComponent extends React.Component {
@@ -57,7 +57,6 @@ class DreamComponent extends React.Component {
                 </Card>
                 </div> */}
                 <EditDreamComponent currentDream={this.props.dreamObj} />
-                <DeleteDreamComponent currentDream={this.props.dreamObj} />
             </div>
         )
     }

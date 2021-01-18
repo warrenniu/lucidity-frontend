@@ -8,7 +8,6 @@ import { connect } from 'react-redux'
 class JournalComponent extends React.Component {
 
     render() {
-        console.log(this.props.journalObj)
         return (
             <div>
                 <h3>Journal Component</h3>
