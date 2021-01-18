@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import EditDreamModal from './EditDreamModal'
 import DeleteDreamComponent from './DeleteDreamComponent'
 import CardDetailModal from './CardDetailModal'
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles({
   root: {
@@ -20,6 +22,7 @@ const useStyles = makeStyles({
 
 export default function MediaCard(props) {
   const classes = useStyles();
+  // const [value, setValue] = React.useState(2);
 
   return (
     <Card className={classes.root}>
@@ -36,9 +39,10 @@ export default function MediaCard(props) {
           <Typography variant="body2" color="textSecondary" component="p">
             {props.currentDream.date}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Rating: {props.currentDream.rating}
-          </Typography>
+          <Box component="fieldset" mb={3} borderColor="transparent">
+            <Typography component="legend"></Typography>
+            <Rating name="read-only" value={props.currentDream.rating} readOnly />
+          </Box>
         </CardContent>
       </CardActionArea>
       <CardDetailModal currentDream={props.currentDream} />
