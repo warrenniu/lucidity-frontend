@@ -20,11 +20,12 @@ class JournalContainer extends React.Component {
 
 
     render() {
-        console.log("Journals from redux state", this.props.journals)
         return (
             <div>
                 <h3>Journal Container</h3>
+                {/* <div className="div3"> */}
                 <CreateJournalComponent />
+                {/* </div> */}
                 {this.props.user ? this.arrayOfJournals() : null }
             </div>
         )

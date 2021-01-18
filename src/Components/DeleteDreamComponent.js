@@ -13,8 +13,8 @@ function DeleteDreamComponent(props) {
 
     return (
         <div>
-            <Button style={{ 'marginRight': '10px' }} variant="contained" color="secondary" onClick={() => clickHandler()}>
-                Delete Dream
+            <Button style={{ 'marginRight': '10px' }} color="primary" onClick={() => clickHandler()}>
+                Delete
 		    </Button>
         </div>
     )

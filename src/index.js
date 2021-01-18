@@ -11,8 +11,6 @@ import reportWebVitals from './reportWebVitals';
 import 'fontsource-roboto';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-// import Container from '@material-ui/core/Container';
 
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
