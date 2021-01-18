@@ -12,39 +12,19 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button'
+import MediaCard from './MediaCard'
 import TransitionsModal from './TransitionsModal'
 // import image from '../Images/cocktail.jpeg'
-
-
-// const useStyles = makeStyles((theme) => ({
-//     root: {
-//       maxWidth: 345,
-//     },
-//     media: {
-//       height: 0,
-//       paddingTop: '56.25%', // 16:9
-//     },
-//     expand: {
-//       transform: 'rotate(0deg)',
-//       marginLeft: 'auto',
-//       transition: theme.transitions.create('transform', {
-//         duration: theme.transitions.duration.shortest,
-//       }),
-//     },
-//     expandOpen: {
-//       transform: 'rotate(180deg)',
-//     },
-//     avatar: {
-//       backgroundColor: red[500],
-//     },
-//   }));
 
 class DreamComponent extends React.Component {
 
     render() {
         return (
             <div>
-                <div
+                <div>
+                <MediaCard currentDream={this.props.dreamObj} />
+                </div>
+                {/* <div
                 id="dreamComponent" style={{
                     'border': '2px solid white',
                     'borderRadius': '3%',
@@ -75,7 +55,7 @@ class DreamComponent extends React.Component {
             
                     <TransitionsModal currentDream={this.props.dreamObj} />
                 </Card>
-                </div>
+                </div> */}
                 <EditDreamComponent currentDream={this.props.dreamObj} />
                 <DeleteDreamComponent currentDream={this.props.dreamObj} />
             </div>

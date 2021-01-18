@@ -33,8 +33,8 @@ export default function TransitionsModal(props) {
 
   return (
     <div>
-      <Button variant="contained" color="secondary" type="button" onClick={handleOpen}>
-        Open Dream
+      <Button  color="primary" type="button" onClick={handleOpen}>
+        Open 
       </Button>
       <Modal
         aria-labelledby="modal-dream-title"
