@@ -1,11 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
-import { patchDream } from '../Redux/actions'
+import { postDream } from '../Redux/actions'
 import { withRouter } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -22,28 +24,27 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function useInput(initialValue){
+function useInput(initialValue) {
     const [value, setValue] = useState(initialValue);
- 
-     function handleChange(event){
-         setValue(event.target.value);
-     }
- 
-    return [value,handleChange];
- }
 
-function EditDreamModal(props) {
+    function handleChange(event) {
+        setValue(event.target.value);
+    }
+
+    return [value, handleChange];
+}
+
+function CreateDreamModal(props) {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
-    const [title, setTitle] = useInput(props.currentDream.title)
-    const [rating, setRating] = useInput(props.currentDream.rating)
-    const [date, setDate] = useInput(props.currentDream.date)
-    const [story, setStory] = useInput(props.currentDream.story)
-    const [character, setCharacter] = useInput(props.currentDream.character)
-    const [place, setPlace] = useInput(props.currentDream.place)
-    const [action, setAction] = useInput(props.currentDream.action)
-    const [image, setImage] = useInput(props.currentDream.image)
-
+    const [title, setTitle] = useInput("")
+    const [rating, setRating] = useInput("")
+    const [date, setDate] = useInput("")
+    const [story, setStory] = useInput("")
+    const [character, setCharacter] = useInput("")
+    const [place, setPlace] = useInput("")
+    const [action, setAction] = useInput("")
+    const [image, setImage] = useInput("")
     // const state = {
     //     title: props.currentDream.title,
     //     rating: props.currentDream.rating,
@@ -58,21 +59,8 @@ function EditDreamModal(props) {
 
     const formSubmitHandler = (event) => {
         event.preventDefault()
-        const updatedDream = {
-            title: title,
-            rating: rating,
-            date: date,
-            story: story,
-            character: character,
-            place: place,
-            action: action,
-            image: image,
-            id: props.currentDream.id
-
-        }
-        console.log(title)
-        props.patchDream(updatedDream)
-        // props.history.push('/journals')
+        props.postDream(props.journalObj)
+        props.history.push('/journals')
 
     }
 
@@ -86,9 +74,9 @@ function EditDreamModal(props) {
 
     return (
         <div>
-            <Button color="primary" type="button" onClick={handleOpen}>
-                Edit
-      </Button>
+            <Fab color="secondary" aria-label="add" type="button" onClick={handleOpen}>
+                <AddIcon />
+            </Fab>
             <Modal
                 aria-labelledby="modal-dream-title"
                 aria-describedby="modal-dream-story"
@@ -102,7 +90,7 @@ function EditDreamModal(props) {
                 }}
             >
                 <Fade in={open}>
-                    <form style={{ 'marginBottom': '15px' }} onSubmit={formSubmitHandler} className={classes.paper}>
+                    <form style={{ 'marginBottom': '15px' }} onSubmit={() => formSubmitHandler} className={classes.paper}>
                         <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Title" name="title" value={title} onChange={setTitle} />
                         <input className='inputOverride' style={{ 'marginRight': '15px' }} type="integer" placeholder="Rating" name="rating" value={rating} onChange={setRating} />
                         <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Date" name="date" value={date} onChange={setDate} />
@@ -112,7 +100,7 @@ function EditDreamModal(props) {
                         <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Action" name="action" value={action} onChange={setAction} />
                         <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Image" name="image" value={image} onChange={setImage} />
                         <Button variant="contained" color="secondary" type="submit">
-                            Edit Dream
+                            Add Dream
 					</Button>
                     </form>
                 </Fade>
@@ -122,15 +110,15 @@ function EditDreamModal(props) {
 }
 function msp(state) {
     return {
-        journals: state.journals,
-        dreams: state.dreams
+        user: state.user,
+        journals: state.journals
     }
 }
 
 function mdp(dispatch) {
     return {
-        patchDream: dreamObj => dispatch(patchDream(dreamObj))
+        postDream: newDreamObj => dispatch(postDream(newDreamObj))
     }
 }
 
-export default connect(msp, mdp)(withRouter(EditDreamModal))
+export default connect(msp, mdp)(withRouter(CreateDreamModal))

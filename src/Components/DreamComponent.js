@@ -1,5 +1,4 @@
 import React from 'react'
-import EditDreamComponent from './EditDreamComponent'
 // import DeleteDreamComponent from './DeleteDreamComponent'
 // import { makeStyles } from '@material-ui/core/styles';
 // import clsx from 'clsx';
@@ -56,7 +55,6 @@ class DreamComponent extends React.Component {
                     <TransitionsModal currentDream={this.props.dreamObj} />
                 </Card>
                 </div> */}
-                <EditDreamComponent currentDream={this.props.dreamObj} />
             </div>
         )
     }

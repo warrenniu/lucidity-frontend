@@ -87,6 +87,13 @@
     padding: 20px;
   }
 
+  .mediaCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* align-items: center, */
+  }
+
   .inputOverride:focus {
     border-color: #000;
     outline: 0;
