@@ -45,22 +45,24 @@ function CreateDreamModal(props) {
     const [place, setPlace] = useInput("")
     const [action, setAction] = useInput("")
     const [image, setImage] = useInput("")
-    // const state = {
-    //     title: props.currentDream.title,
-    //     rating: props.currentDream.rating,
-    //     date: props.currentDream.date,
-    //     story: props.currentDream.story,
-    //     character: props.currentDream.character,
-    //     place: props.currentDream.place,
-    //     action: props.currentDream.action,
-    //     image: props.currentDream.image,
-    //     id: props.currentDream.id
-    // }
 
     const formSubmitHandler = (event) => {
         event.preventDefault()
-        props.postDream(props.journalObj)
-        props.history.push('/journals')
+        const newDream = {
+            title: title,
+            rating: rating,
+            date: date,
+            story: story,
+            character: character,
+            place: place,
+            action: action,
+            image: image,
+            journal_id: props.journalId
+
+        }
+        props.postDream(newDream)
+        // this.setState({ title: "", rating: "", date: "", story: "", character: "", place: "", action: "", image: "" })
+        // props.history.push('/journals')
 
     }
 
@@ -90,7 +92,7 @@ function CreateDreamModal(props) {
                 }}
             >
                 <Fade in={open}>
-                    <form style={{ 'marginBottom': '15px' }} onSubmit={() => formSubmitHandler} className={classes.paper}>
+                    <form style={{ 'marginBottom': '15px' }} onSubmit={formSubmitHandler} className={classes.paper}>
                         <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Title" name="title" value={title} onChange={setTitle} />
                         <input className='inputOverride' style={{ 'marginRight': '15px' }} type="integer" placeholder="Rating" name="rating" value={rating} onChange={setRating} />
                         <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Date" name="date" value={date} onChange={setDate} />
