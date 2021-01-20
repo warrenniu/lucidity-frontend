@@ -25,7 +25,7 @@ export default function MediaCard(props) {
   // const [value, setValue] = React.useState(2);
 
   return (
-    <div className="mediaCard">
+    
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
@@ -50,6 +50,5 @@ export default function MediaCard(props) {
       <EditDreamModal currentDream={props.currentDream} />
       <DeleteDreamComponent currentDream={props.currentDream} />
     </Card>
-    </div>
   );
 }

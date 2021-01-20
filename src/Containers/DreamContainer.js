@@ -17,7 +17,7 @@ class DreamContainer extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="dreamCard">
                 {this.arrayOfDreams()}
             </div>
         )

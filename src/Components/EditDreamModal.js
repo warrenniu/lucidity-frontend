@@ -70,7 +70,6 @@ function EditDreamModal(props) {
             id: props.currentDream.id
 
         }
-        console.log(title)
         props.patchDream(updatedDream)
         // props.history.push('/journals')
 

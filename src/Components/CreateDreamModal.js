@@ -76,7 +76,7 @@ function CreateDreamModal(props) {
 
     return (
         <div>
-            <Fab color="secondary" aria-label="add" type="button" onClick={handleOpen}>
+            <Fab className="addDream" color="secondary" aria-label="add" type="button" onClick={handleOpen}>
                 <AddIcon />
             </Fab>
             <Modal
