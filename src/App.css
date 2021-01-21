@@ -84,6 +84,13 @@
     float: right;
   }
 
+  .searchComponent {
+    float: left;
+    /* text-align: center; */
+    border-right-style: dotted;
+    /* padding-right: 5%; */
+  }
+
   .inputOverride:focus {
     border-color: #000;
     outline: 0;

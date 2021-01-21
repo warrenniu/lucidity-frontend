@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
 import { postDream } from '../Redux/actions'
 import { withRouter } from 'react-router-dom'
+import TextField from '@material-ui/core/TextField'; 
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -21,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
+    },
+    root: {
+        width: '25ch'
     },
 }));
 
@@ -93,7 +97,7 @@ function CreateDreamModal(props) {
             >
                 <Fade in={open}>
                     <form style={{ 'marginBottom': '15px' }} onSubmit={formSubmitHandler} className={classes.paper}>
-                        <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Title" name="title" value={title} onChange={setTitle} />
+                        <TextField id="outlined-basic" label="Title" variant="outlined" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Title" name="title" value={title} onChange={setTitle} />
                         <input className='inputOverride' style={{ 'marginRight': '15px' }} type="integer" placeholder="Rating" name="rating" value={rating} onChange={setRating} />
                         <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Date" name="date" value={date} onChange={setDate} />
                         <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Story" name="story" value={story} onChange={setStory} />
