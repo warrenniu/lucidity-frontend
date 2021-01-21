@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -7,6 +7,10 @@ import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
 import { patchDream } from '../Redux/actions'
 import { withRouter } from 'react-router-dom'
+import TextField from '@material-ui/core/TextField';
+import Rating from '@material-ui/lab/Rating';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -22,15 +26,15 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function useInput(initialValue){
+function useInput(initialValue) {
     const [value, setValue] = useState(initialValue);
- 
-     function handleChange(event){
-         setValue(event.target.value);
-     }
- 
-    return [value,handleChange];
- }
+
+    function handleChange(event) {
+        setValue(event.target.value);
+    }
+
+    return [value, handleChange];
+}
 
 function EditDreamModal(props) {
     const classes = useStyles();
@@ -43,18 +47,6 @@ function EditDreamModal(props) {
     const [place, setPlace] = useInput(props.currentDream.place)
     const [action, setAction] = useInput(props.currentDream.action)
     const [image, setImage] = useInput(props.currentDream.image)
-
-    // const state = {
-    //     title: props.currentDream.title,
-    //     rating: props.currentDream.rating,
-    //     date: props.currentDream.date,
-    //     story: props.currentDream.story,
-    //     character: props.currentDream.character,
-    //     place: props.currentDream.place,
-    //     action: props.currentDream.action,
-    //     image: props.currentDream.image,
-    //     id: props.currentDream.id
-    // }
 
     const formSubmitHandler = (event) => {
         event.preventDefault()
@@ -102,14 +94,28 @@ function EditDreamModal(props) {
             >
                 <Fade in={open}>
                     <form style={{ 'marginBottom': '15px' }} onSubmit={formSubmitHandler} className={classes.paper}>
-                        <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Title" name="title" value={title} onChange={setTitle} />
-                        <input className='inputOverride' style={{ 'marginRight': '15px' }} type="integer" placeholder="Rating" name="rating" value={rating} onChange={setRating} />
-                        <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Date" name="date" value={date} onChange={setDate} />
-                        <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Story" name="story" value={story} onChange={setStory} />
-                        <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Character" name="character" value={character} onChange={setCharacter} />
-                        <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Place" name="place" value={place} onChange={setPlace} />
-                        <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Action" name="action" value={action} onChange={setAction} />
-                        <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Image" name="image" value={image} onChange={setImage} />
+                        <TextField id="outlined-basic" label="Title" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Title" name="title" value={title} onChange={setTitle} />
+                        <br></br>
+                        {/* <TextField id="outlined-basic" label="Rating" className='inputOverride' style={{ 'marginRight': '15px' }} type="integer" placeholder="Rating" name="rating" value={rating} onChange={setRating} /> */}
+                        <Box className="ratingForm" component="fieldset" mb={3} borderColor="transparent">
+                            <Typography component="legend">Rating</Typography>
+                            <Rating
+                                name="simple-controlled"
+                                value={rating}
+                                onChange={setRating}
+                            />
+                        </Box>
+                        <TextField label="Date" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Date" name="date" value={date} onChange={setDate} />
+                        <br></br>
+                        <TextField label="Story" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Story" name="story" value={story} onChange={setStory} />
+                        <br></br>
+                        <TextField label="Character" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Character" name="character" value={character} onChange={setCharacter} />
+                        <br></br>
+                        <TextField label="Place" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Place" name="place" value={place} onChange={setPlace} />
+                        <br></br>
+                        <TextField label="Action" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Action" name="action" value={action} onChange={setAction} />
+                        <br></br>
+                        <TextField label="Image" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Image" name="image" value={image} onChange={setImage} />
                         <Button variant="contained" color="secondary" type="submit">
                             Edit Dream
 					</Button>

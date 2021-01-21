@@ -9,7 +9,10 @@ import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
 import { postDream } from '../Redux/actions'
 import { withRouter } from 'react-router-dom'
-import TextField from '@material-ui/core/TextField'; 
+import TextField from '@material-ui/core/TextField';
+import Rating from '@material-ui/lab/Rating';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -97,14 +100,27 @@ function CreateDreamModal(props) {
             >
                 <Fade in={open}>
                     <form style={{ 'marginBottom': '15px' }} onSubmit={formSubmitHandler} className={classes.paper}>
-                        <TextField id="outlined-basic" label="Title" variant="outlined" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Title" name="title" value={title} onChange={setTitle} />
-                        <input className='inputOverride' style={{ 'marginRight': '15px' }} type="integer" placeholder="Rating" name="rating" value={rating} onChange={setRating} />
-                        <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Date" name="date" value={date} onChange={setDate} />
-                        <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Story" name="story" value={story} onChange={setStory} />
-                        <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Character" name="character" value={character} onChange={setCharacter} />
-                        <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Place" name="place" value={place} onChange={setPlace} />
-                        <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Action" name="action" value={action} onChange={setAction} />
-                        <input className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Image" name="image" value={image} onChange={setImage} />
+                        <TextField id="outlined-basic" label="Title" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Title" name="title" value={title} onChange={setTitle} />
+                        {/* <TextField id="outlined-basic" label="Rating" className='inputOverride' style={{ 'marginRight': '15px' }} type="integer" placeholder="Rating" name="rating" value={rating} onChange={setRating} /> */}
+                        <Box className="ratingForm" component="fieldset" mb={3} borderColor="transparent">
+                            <Typography component="legend">Rating</Typography>
+                            <Rating
+                                name="simple-controlled"
+                                value={rating}
+                                onChange={setRating}
+                            />
+                        </Box>
+                        <TextField id="outlined-basic" label="Date" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Date" name="date" value={date} onChange={setDate} />
+                        <br></br>
+                        <TextField id="outlined-basic" label="Story" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Story" name="story" value={story} onChange={setStory} />
+                        <br></br>
+                        <TextField id="outlined-basic" label="Character" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Character" name="character" value={character} onChange={setCharacter} />
+                        <br></br>
+                        <TextField id="outlined-basic" label="Place" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Place" name="place" value={place} onChange={setPlace} />
+                        <br></br>
+                        <TextField id="outlined-basic" label="Action" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Action" name="action" value={action} onChange={setAction} />
+                        <br></br>
+                        <TextField id="outlined-basic" label="Image" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Image" name="image" value={image} onChange={setImage} />
                         <Button variant="contained" color="secondary" type="submit">
                             Add Dream
 					</Button>

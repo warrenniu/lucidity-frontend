@@ -7,6 +7,7 @@ import LogInComponent from './Components/LogInComponent'
 import HomeComponent from './Components/HomeComponent'
 import JournalContainer from './Containers/JournalContainer'
 import MainContainer from './Containers/MainContainer'
+import AnalysisComponent from './Components/AnalysisComponent'
 // import {connect} from 'react-redux'
 // import {getUser} from './Redux/actions'
 import './App.css';
@@ -36,10 +37,11 @@ class App extends React.Component {
         </div>
         <div className="div4">
           <Switch>
+            <Route path="/journals/analysis" component={AnalysisComponent} />
             <Route path="/login" component={LogInComponent} />
             <Route path="/signup" component={SignUpComponent} />
             <Route path="/home" component={HomeComponent} />
-            <Route path="/journals" exact component={JournalContainer} />
+            <Route path="/journals" exact component={JournalContainer} /> 
             <Route path="/" component={MainContainer} />
           </Switch>
         </div>

@@ -41,14 +41,14 @@
     display: flex;
     flex-direction: row;
     /* align-items: center; */
-    background-color:lightpink;
+    /* background-color:lightpink; */
     justify-content: center;
     overflow-x: scroll;
   }
 
   .div5 {
     display: flex;
-    background-color:yellow;
+    /* background-color:yellow; */
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;

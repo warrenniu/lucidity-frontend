@@ -4,6 +4,7 @@ import CreateJournalComponent from '../Components/CreateJournalComponent'
 import { connect } from 'react-redux'
 import { getUser } from '../Redux/actions'
 import { getJournals } from '../Redux/actions'
+import '../App.css';
 
 class JournalContainer extends React.Component {
 
@@ -23,10 +24,12 @@ class JournalContainer extends React.Component {
         return (
             <div>
                 <h3>Journal Container</h3>
-                {/* <div className="div3"> */}
+                <div>
                 <CreateJournalComponent />
-                {/* </div> */}
+                </div>
+                <div>
                 {this.props.user ? this.arrayOfJournals() : null }
+                </div>
             </div>
         )
 

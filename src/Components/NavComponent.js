@@ -15,21 +15,25 @@ class NavComponent extends React.Component {
                         Home
 				</Button>
 
-                    <Button style={{ 'fontSize': '20px' }} color="primary" component={RouterLink} to="/journals/">
-                        Journal
+                    {this.props.user ?
+                        <Button style={{ 'fontSize': '20px' }} color="primary" component={RouterLink} to="/journals/">
+                            Journal
 				</Button>
+                        :
+                        null
+                    }
 
-                    <Button style={{ 'fontSize': '20px' }} color="primary" component={RouterLink} to="/journals/analysis">
-                        Analysis
+                    {this.props.user ?
+                        <Button style={{ 'fontSize': '20px' }} color="primary" component={RouterLink} to="/journals/analysis">
+                            Analysis
 				</Button>
+                        :
+                        null
+                    }
 
                     <Button style={{ 'fontSize': '20px' }} color="primary" component={RouterLink} to="/login">
                         Log In
 				</Button>
-
-                    {/* <Button style={{ 'fontSize': '20px' }} color="primary" component={RouterLink} to="/signup">
-                        Sign Up
-				</Button><br /> */}
 
                 </div>
             </div>
