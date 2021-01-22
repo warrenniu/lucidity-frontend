@@ -91,6 +91,19 @@
     /* padding-right: 5%; */
   }
 
+
+  .pieChart {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    /* flex-wrap: wrap;  */
+    width: 200px;
+    margin: 30px;
+    /* border: solid; */
+    float: left;
+
+  }
+
   .inputOverride:focus {
     border-color: #000;
     outline: 0;
