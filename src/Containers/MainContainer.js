@@ -2,7 +2,7 @@ import React from 'react'
 import JournalContainer from './JournalContainer'
 import { connect } from 'react-redux'
 // import {getJournals} from '../Redux/actions'
-import { getUser } from '../Redux/actions'
+// import { getUser } from '../Redux/actions'
 
 
 class MainContainer extends React.Component {
@@ -16,7 +16,7 @@ class MainContainer extends React.Component {
     }
 
     render() {
-        console.log(this.props.user)
+        // console.log(this.props.user)
         return (
             <div>
                 <h3>Main Container</h3>
@@ -36,11 +36,11 @@ function msp(state) {
     }
 }
 
-function mdp(dispatch) {
-    return {
-        // getJournals: () => dispatch(getJournals()),
-        getUser: () => dispatch(getUser())
-    }
-}
+// function mdp(dispatch) {
+//     return {
+//         // getJournals: () => dispatch(getJournals()),
+//         getUser: () => dispatch(getUser())
+//     }
+// }
 
-export default connect(msp, mdp)(MainContainer)
+export default connect(msp)(MainContainer)

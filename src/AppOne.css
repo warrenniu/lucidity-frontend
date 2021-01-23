@@ -1,4 +1,4 @@
-  .parent {
+.parent {
     display: grid;
     /* grid-template-columns: 15% 30% 27.5% 27.5%; */
     grid-template-columns: 1fr 5fr;
@@ -8,28 +8,17 @@
     grid-row-gap: 0px;
     }
     
-    /* .div1 { grid-area: 1 / 1 / 2 / 2; }
+    .div1 { grid-area: 1 / 1 / 2 / 2; }
     .div2 { grid-area: 1 / 2 / 2 / 5; }
     .div3 { grid-area: 2 / 1 / 5 / 2; }
     .div4 { grid-area: 2 / 2 / 4 / 5; }
-    .div5 { grid-area: 4 / 2 / 5 / 5; } */
-
-    .div1 { grid-area: 1 / 1 / 2 / 2; }
-    .div2 { grid-area: 1 / 2 / 2 / 5; }
-    .div3 { grid-area: 2 / 1 / 4 / 5; }
-    .div4 { grid-area: 4 / 1 / 5 / 5; }
-
-/* .div1 { grid-area: 1 / 1 / 2 / 5; }
-.div2 { grid-area: 2 / 1 / 4 / 5; }
-.div3 { grid-area: 4 / 1 / 5 / 5; } */
-
+    .div5 { grid-area: 4 / 2 / 5 / 5; }
 
 
   .div1 {
       display: flex;
       align-items: flex-end;
-      
-      justify-content: flex-start;
+      justify-content: center;
   }
 
   .div2 {
@@ -39,36 +28,25 @@
     align-items: flex-end;
     border-bottom-style: solid;
     border-color: purple;
-    /* background-color: orange;  */
+    /* background-color: orange; */
   }
-  /* .div2 {
-    display: inline;
-    /* flex-direction: row;
-    justify-content:flex-end;
-    align-items: flex-end; 
-    border-bottom-style: solid;
-    border-color: purple;
-    background-color: orange;
-  } */
-
-  /* .div3 {
+  .div3 {
     display: flex;
     flex-direction: column;
     background-color: purple;
     align-items: center;
-  } */
+  }
 
-  .div3 {
+  .div4 {
     display: flex;
-    /* flex-direction: row; */
+    flex-direction: row;
     /* align-items: center; */
-    background-color:lightpink;
+    /* background-color:lightpink; */
     justify-content: center;
     overflow-x: scroll;
   }
 
-
-  .div4 {
+  .div5 {
     display: flex;
     /* background-color:yellow; */
     flex-direction: column;
@@ -111,11 +89,6 @@
     /* text-align: center; */
     border-right-style: dotted;
     /* padding-right: 5%; */
-  }
-
-  .navComponent {
-    background-color: pink;
-    float: right;
   }
 
 

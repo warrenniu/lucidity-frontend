@@ -6,12 +6,21 @@ import { connect } from 'react-redux'
 class DreamContainer extends React.Component {
 
     state = {
-        searchTerm: ""
+        searchTerm: "",
+        journalObj: null,
+        id: null
     }
 
     componentDidMount() {
         this.props.getDreams()
+        // this.findJournalObj()
     }
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevState.id !== this.props.match.params.id) {
+    //         this.findJournalObj()
+    //     }
+    // }
 
     searchChangeHandler = (event) => {
         this.setState({searchTerm: event.target.value})
@@ -24,11 +33,28 @@ class DreamContainer extends React.Component {
         return dreamArray.map(dreamEl => <DreamComponent key={dreamEl.id} dreamObj={dreamEl} />)
     }
 
+    // findJournalObj = () => {
+    //     const id = parseInt(this.props.match.params.id) 
+    //     this.setState({id: id})
+    //     const foundJournalObj = this.props.journals.find(journalEl => journalEl.id ===id)
+    //     console.log(this.props.journals)
+    //     this.setState({journalObj: foundJournalObj})
+    //     console.log("id", id)
+    //     console.log("found journal", foundJournalObj)
+    // }
+
+
+
+
     render() {
+        // console.log(this.props.match.params.id)
         return (
             <div>
             <div className="dreamCard">
                 {this.arrayOfDreams()}
+                {/* {this.state.journalObj ? console.log("object in state", this.state.journalObj) : console.log("object not in state")}
+                {this.state.journalObj ? <h3>{this.state.journalObj.year}</h3> : null} */}
+                <h1>hello</h1>
             </div>
             </div>
         )

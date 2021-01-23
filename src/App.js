@@ -6,38 +6,48 @@ import SignUpComponent from './Components/SignUpComponent'
 import LogInComponent from './Components/LogInComponent'
 import HomeComponent from './Components/HomeComponent'
 import JournalContainer from './Containers/JournalContainer'
+import DreamContainer from './Containers/DreamContainer'
 import MainContainer from './Containers/MainContainer'
 import AnalysisComponent from './Components/AnalysisComponent'
-// import {connect} from 'react-redux'
-// import {getUser} from './Redux/actions'
+import SideBar from "./Components/SideBar";
+import styled from "styled-components";
+import {connect} from 'react-redux'
+import {getUser} from './Redux/actions'
+import {getJournals} from './Redux/actions'
 import './App.css';
+// import './AppOne.css'
+
 
 class App extends React.Component {
 
-//   componentDidMount() {
-//     // this.props.getJournals()
-//     if (!this.props.user) {
-//     this.props.getUser()
-//     console.log("in componentDidMount")
-//     }
-// }
+  componentDidMount() {
+    // this.props.getJournals()
+    if (!this.props.user) {
+    this.props.getUser()
+    this.props.getJournals()
+    console.log("in componentDidMount")
+    }
+}
 
   render() {
 
     return (
       <div className="parent">
-        {/* {this.props.user !== null ? <JournalContainer /> : null}  */}
+        {/* {this.props.user !== null ? <MainContainer /> : null}  */}
         <div className="div1">
           <img src="/Lucidity Logo.png" alt="Lucidity logo" />
         </div>
         <div className="div2">
-          <NavComponent />
+        <NavComponent />
         </div>
+        {/* <div className="div3">
+
+        </div> */}
         <div className="div3">
-        </div>
-        <div className="div4">
+           <SideBar /> 
           <Switch>
             <Route path="/journals/analysis" component={AnalysisComponent} />
+            <Route exact path="/journals/:id" component={DreamContainer} />
             <Route path="/login" component={LogInComponent} />
             <Route path="/signup" component={SignUpComponent} />
             <Route path="/home" component={HomeComponent} />
@@ -45,7 +55,7 @@ class App extends React.Component {
             <Route path="/" component={MainContainer} />
           </Switch>
         </div>
-        <div className="div5">
+        <div className="div4">
           <p style={{ 'color': 'black', 'fontSize': '16px' }}>Copyright 2021 Lucidity: A Warren Niu Project</p>
           <a href="https://github.com/warrenniu/lucidity-frontend" target="_blank" rel="noreferrer"><img src="/github.png" alt="github" /></a>
         </div>
@@ -54,18 +64,24 @@ class App extends React.Component {
   }
 }
 
-// function msp(state) {
-//   return {
-//       user: state.user,
-//       journals: state.journals
-//   }
-// }
+// const Wrapper = styled.div`
+//   height: 100vh;
+//   width: 100vw;
+//   display: flex;
+// `;
 
-// function mdp(dispatch) {
-//   return {
-//       // getJournals: () => dispatch(getJournals()),
-//       getUser: () => dispatch(getUser())
-//   }
-// }
+function msp(state) {
+  return {
+      user: state.user,
+      journals: state.journals
+  }
+}
 
-export default (withRouter(App));
+function mdp(dispatch) {
+  return {
+      getJournals: () => dispatch(getJournals()),
+      getUser: () => dispatch(getUser())
+  }
+}
+
+export default connect(msp, mdp)(withRouter(App));

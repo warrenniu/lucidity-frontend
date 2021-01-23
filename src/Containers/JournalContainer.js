@@ -1,6 +1,7 @@
 import React from 'react'
 import JournalComponent from '../Components/JournalComponent'
 import CreateJournalComponent from '../Components/CreateJournalComponent'
+import CreateJournalModal from '../Components/CreateJournalModal'
 import { connect } from 'react-redux'
 import { getUser } from '../Redux/actions'
 import { getJournals } from '../Redux/actions'
@@ -25,7 +26,8 @@ class JournalContainer extends React.Component {
             <div>
                 <h3>Journal Container</h3>
                 <div>
-                <CreateJournalComponent />
+                <CreateJournalModal />
+                {/* <CreateJournalComponent /> */}
                 </div>
                 <div>
                 {this.props.user ? this.arrayOfJournals() : null }

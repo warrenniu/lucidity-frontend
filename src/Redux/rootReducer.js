@@ -54,9 +54,6 @@ function dreamsReducer(prevState = defaultState.dreams, action) {
             return newDreamArray
         case "DELETE_DREAM":
             return prevState.filter(dream => dream.id !== action.payload.id)
-        // case "SEARCH":
-        //     let filteredDreamArray = [...prevState]
-        //     return filteredDreamArray.filter(dream => dream.title.toLowerCase().includes(action.payload.toLowerCase()))
         default:
             return prevState
     }
@@ -65,8 +62,6 @@ function dreamsReducer(prevState = defaultState.dreams, action) {
 function valueReducer(prevState = defaultState.value, action) {
     switch(action.type) {
         case "SEARCH": 
-        //   const {value} = action;
-        //   const dreams = prevState.contents.filter((val) => val.includes(value));
           return action.payload
     
         default:
