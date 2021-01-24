@@ -11,12 +11,12 @@ class JournalComponent extends React.Component {
         return (
             <div>
                 <h3>Journal Component</h3>
-                <h3>Year: {this.props.journalObj.year}</h3>
-                <h3>Month: {this.props.journalObj.month}</h3>
+                <h3>{this.props.journalObj.title}</h3>
+                <br></br>
+                <DreamContainer journalId={this.props.journalObj.id} />
                 <EditJournalModal currentJournal={this.props.journalObj} />
                 <br></br>
                 <DeleteJournalComponent currentJournal={this.props.journalObj} />
-                <DreamContainer journalId={this.props.journalObj.id} />
                 <CreateDreamModal journalId={this.props.journalObj.id} />
             </div>
         )

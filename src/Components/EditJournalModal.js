@@ -36,12 +36,14 @@ function useInput(initialValue) {
 function EditJournalModal(props) {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
+    const [title, setTitle] = useInput(props.currentJournal.title)
     const [year, setYear] = useInput(props.currentJournal.year)
     const [month, setMonth] = useInput(props.currentJournal.month)
 
     const formSubmitHandler = (event) => {
         event.preventDefault()
         const updatedJournal = {
+            title: title,
             year: year,
             month: month,
             id: props.currentJournal.id
@@ -79,8 +81,10 @@ function EditJournalModal(props) {
             >
                 <Fade in={open}>
                     <form style={{ 'marginBottom': '15px' }} onSubmit={formSubmitHandler} className={classes.paper}>
+                        <TextField label="Title" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Title" name="title" value={title} onChange={setTitle} />
+                        <br></br>
                         <TextField label="Year" className='inputOverride' style={{ 'marginRight': '15px' }} type="integer" placeholder="Year" name="year" value={year} onChange={setYear} />
-                        <br></br>             
+                        <br></br>
                         <TextField label="Month" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Month" name="month" value={month} onChange={setMonth} />
                         <Button variant="contained" color="secondary" type="submit">
                             Edit Journal
