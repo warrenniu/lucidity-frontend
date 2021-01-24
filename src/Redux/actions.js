@@ -1,13 +1,15 @@
-import { GET_JOURNALS, POST_JOURNAL, PATCH_JOURNAL, DELETE_JOURNAL, GET_USER, POST_USER, POST_LOGIN, POST_DREAM, GET_DREAMS, PATCH_DREAM, DELETE_DREAM, SEARCH } from './actionTypes'
+import { GET_JOURNALS, POST_JOURNAL, PATCH_JOURNAL, DELETE_JOURNAL, GET_USER, REMOVE_USER, POST_USER, POST_LOGIN, POST_DREAM, GET_DREAMS, PATCH_DREAM, DELETE_DREAM, SEARCH } from './actionTypes'
 
 const BASE_URL = "http://localhost:4000"
 
 export function getJournals() {
+    const token = localStorage.getItem("token")
     return function (dispatch) {
         fetch(`${BASE_URL}/api/v1/journals`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
             }
         })
             .then(response => response.json())
@@ -18,11 +20,13 @@ export function getJournals() {
 }
 
 export function postJournal(newJournalObj) {
+    const token = localStorage.getItem("token")
     return function (dispatch) {
         fetch(`${BASE_URL}/api/v1/journals`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
             },
             body: JSON.stringify(newJournalObj),
         })
@@ -34,11 +38,13 @@ export function postJournal(newJournalObj) {
 }
 
 export function patchJournal(updatedJournalObj) {
+    const token = localStorage.getItem("token")
 	return function (dispatch) {
 		fetch(`${BASE_URL}/api/v1/journals/${updatedJournalObj.id}`, {
 			method: 'PATCH',
 			headers: {
-				'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
 			},
 			body: JSON.stringify(updatedJournalObj),
 		})
@@ -50,11 +56,13 @@ export function patchJournal(updatedJournalObj) {
 }
 
 export function deleteJournal(journalObj) {
+    const token = localStorage.getItem("token")
     return function (dispatch) {
         fetch(`${BASE_URL}/api/v1/journals/${journalObj.id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
             }
         })
             .then(response => response.json())
@@ -65,19 +73,32 @@ export function deleteJournal(journalObj) {
     }
 }
 
-export function getUser() {
-    return function (dispatch) {
-        fetch(`${BASE_URL}/api/v1/users/1`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-            .then(response => response.json())
-            .then(userObj => {
-                dispatch({ type: GET_USER, payload: userObj })
-            })
+// export function getUser() {
+//     return function (dispatch) {
+//         fetch(`${BASE_URL}/api/v1/users/1`, {
+//             method: 'GET',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             }
+//         })
+//             .then(response => response.json())
+//             .then(userObj => {
+//                 dispatch({ type: GET_USER, payload: userObj })
+//             })
+//     }
+// }
+
+export function getUser(currentUser) {
+	return function (dispatch) {
+        dispatch({ type: GET_USER, payload: currentUser })
+        
     }
+}
+
+export function removeUser() {
+	return function (dispatch) {
+		dispatch({ type: REMOVE_USER })
+	}
 }
 
 export function postUser(newUser) {
@@ -109,17 +130,20 @@ export function postLogin(userInfo) {
         })
             .then(response => response.json())
             .then(data => {
+                localStorage.setItem("token", data.jwt)
                 dispatch({ type: POST_LOGIN, payload: data })
             })
     }
 }
 
 export function getDreams() {
+    const token = localStorage.getItem("token")
     return function (dispatch) {
         fetch(`${BASE_URL}/api/v1/dreams`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
             }
         })
             .then(response => response.json())
@@ -130,11 +154,13 @@ export function getDreams() {
 }
 
 export function postDream(newDreamObj) {
+    const token = localStorage.getItem("token")
     return function (dispatch) {
         fetch(`${BASE_URL}/api/v1/dreams`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
             },
             body: JSON.stringify(newDreamObj),
         })
@@ -146,11 +172,13 @@ export function postDream(newDreamObj) {
 }
 
 export function patchDream(updatedDreamObj) {
+    const token = localStorage.getItem("token")
 	return function (dispatch) {
 		fetch(`${BASE_URL}/api/v1/dreams/${updatedDreamObj.id}`, {
 			method: 'PATCH',
 			headers: {
-				'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
 			},
 			body: JSON.stringify(updatedDreamObj),
 		})
@@ -162,11 +190,13 @@ export function patchDream(updatedDreamObj) {
 }
 
 export function deleteDream(dreamObj) {
+    const token = localStorage.getItem("token")
     return function (dispatch) {
         fetch(`${BASE_URL}/api/v1/dreams/${dreamObj.id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
             }
         })
             .then(response => response.json())

@@ -18,7 +18,7 @@ function journalsReducer(prevState = defaultState.journals, action) {
             let index = newJournalArray.findIndex(journal => journal.id === action.payload.id)
             newJournalArray[index] = action.payload
             return newJournalArray
-        case "DELETE_JOURNAL" :
+        case "DELETE_JOURNAL":
             return prevState.filter(journalEl => journalEl.id !== action.payload.id)
         default:
             return prevState
@@ -28,11 +28,19 @@ function journalsReducer(prevState = defaultState.journals, action) {
 function userReducer(prevState = defaultState.user, action) {
     switch (action.type) {
         case "GET_USER":
-            return action.payload
+            return action.payload.user
+        case "REMOVE_USER":
+            return null
         case "POST_USER":
             return prevState
         case "POST_LOGIN":
-            return prevState
+            if (action.payload.user) {
+                return action.payload.user
+            } else if (action.payload.message) {
+                return action.payload.message
+            } else {
+                return null
+            }
         default:
             return prevState
     }
@@ -60,14 +68,14 @@ function dreamsReducer(prevState = defaultState.dreams, action) {
 }
 
 function valueReducer(prevState = defaultState.value, action) {
-    switch(action.type) {
-        case "SEARCH": 
-          return action.payload
-    
+    switch (action.type) {
+        case "SEARCH":
+            return action.payload
+
         default:
-          return prevState;
-      }
+            return prevState;
     }
+}
 
 const rootReducer = combineReducers({
     user: userReducer,

@@ -10,23 +10,42 @@ import DreamContainer from './Containers/DreamContainer'
 import MainContainer from './Containers/MainContainer'
 import AnalysisComponent from './Components/AnalysisComponent'
 import SideBar from "./Components/SideBar";
-import styled from "styled-components";
+// import styled from "styled-components";
 import {connect} from 'react-redux'
 import {getUser} from './Redux/actions'
-import {getJournals} from './Redux/actions'
+// import {getJournals} from './Redux/actions'
 import './App.css';
 // import './AppOne.css'
 
 
 class App extends React.Component {
 
-  componentDidMount() {
-    // this.props.getJournals()
-    if (!this.props.user) {
-    this.props.getUser()
-    this.props.getJournals()
-    console.log("in componentDidMount")
-    }
+//   componentDidMount() {
+//     this.props.getJournals()
+//     if (!this.props.user) {
+//     this.props.getUser()
+//     this.props.getJournals()
+//     console.log("in componentDidMount")
+//     }
+// }
+
+BASE_URL = "http://localhost:4000"
+
+componentDidMount() {
+  const token = localStorage.getItem("token")
+		if (token) {
+			fetch(`${this.BASE_URL}/api/v1/profile`, {
+				method: "GET",
+				headers: {Authorization: `Bearer ${token}`},
+			})
+				.then(resp => resp.json())
+				.then(data => {
+					this.props.getUser(data)
+					this.props.history.push('/home')
+				})
+			} else {
+				this.props.history.push('/home')
+			}
 }
 
   render() {
@@ -73,14 +92,15 @@ class App extends React.Component {
 function msp(state) {
   return {
       user: state.user,
-      journals: state.journals
+      // journals: state.journals
   }
 }
 
 function mdp(dispatch) {
   return {
-      getJournals: () => dispatch(getJournals()),
-      getUser: () => dispatch(getUser())
+      // getJournals: () => dispatch(getJournals()),
+      // getUser: () => dispatch(getUser())
+      getUser: currentUser => dispatch(getUser(currentUser))
   }
 }
 

@@ -4,14 +4,16 @@ import { connect } from 'react-redux'
 
 function AnalysisComponent(props) {
 
-
     const checkRating = (value) => {
         const array = []
-        props.dreams.forEach(dreamEl => {
-            if (dreamEl.rating === value) {
-                array.push(dreamEl)
+        props.journals.map(journalEl => {
+            if (journalEl.user_id === props.user.id) {
+                journalEl.dreams.forEach(dreamEl => {
+                    if (dreamEl.rating === value) {
+                        array.push(dreamEl)
+                    }
+                })
             }
-
         })
         return array.length
     }
@@ -19,8 +21,10 @@ function AnalysisComponent(props) {
     const checkMonth = (value) => {
         const array = []
         props.journals.forEach(journalEl => {
-            if (journalEl.month === value) {
-                array.push(journalEl.dreams.length)
+            if (journalEl.user_id === props.user.id) {
+                if (journalEl.month === value) {
+                    array.push(journalEl.dreams.length)
+                }
             }
         })
         if (array.length > 0) {
@@ -84,6 +88,7 @@ function AnalysisComponent(props) {
 
 function msp(state) {
     return {
+        user: state.user,
         dreams: state.dreams,
         journals: state.journals
     }

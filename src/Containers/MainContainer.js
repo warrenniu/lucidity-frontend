@@ -7,13 +7,13 @@ import { connect } from 'react-redux'
 
 class MainContainer extends React.Component {
 
-    componentDidMount() {
-        // this.props.getJournals()
-        if (!this.props.user) {
-            this.props.getUser()
-            console.log("in componentDidMount")
-        }
-    }
+    // componentDidMount() {
+    //     // this.props.getJournals()
+    //     if (!this.props.user) {
+    //         this.props.getUser()
+    //         console.log("in componentDidMount")
+    //     }
+    // }
 
     render() {
         // console.log(this.props.user)

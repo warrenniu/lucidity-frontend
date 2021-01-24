@@ -54,7 +54,6 @@ class DreamContainer extends React.Component {
                 {this.arrayOfDreams()}
                 {/* {this.state.journalObj ? console.log("object in state", this.state.journalObj) : console.log("object not in state")}
                 {this.state.journalObj ? <h3>{this.state.journalObj.year}</h3> : null} */}
-                <h1>hello</h1>
             </div>
             </div>
         )

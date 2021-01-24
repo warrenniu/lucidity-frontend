@@ -11,7 +11,7 @@ class JournalContainer extends React.Component {
 
     componentDidMount() {
         this.props.getJournals()
-        this.props.getUser()
+        // this.props.getUser()
     }
     arrayOfJournals = () => {
         let journalArray = this.props.journals
@@ -48,7 +48,7 @@ function msp(state) {
 function mdp(dispatch) {
     return {
         getJournals: () => dispatch(getJournals()),
-        getUser: () => dispatch(getUser())
+        // getUser: () => dispatch(getUser())
     }
 }
 
