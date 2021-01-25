@@ -26,7 +26,7 @@ export default function MediaCard(props) {
 
   return (
     
-    <Card style={{'backgroundColor': '#b19cd9'}} className={classes.root}>
+    <Card style={{'backgroundColor': '#fff'}} className={classes.root}>
       <CardActionArea>
         <CardMedia
           color="primary"
@@ -35,7 +35,7 @@ export default function MediaCard(props) {
           title="dream image"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h6" component="h6">
             {props.currentDream.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">

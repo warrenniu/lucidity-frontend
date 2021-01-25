@@ -1,24 +1,81 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from 'react-redux'
-// import { NavLink } from 'react-router-dom'
-import { Link as RouterLink, NavLink } from 'react-router-dom'
-import Button from '@material-ui/core/Button';
+import { NavLink } from 'react-router-dom'
+// import Button from '@material-ui/core/Button';
+import CreateJournalModal from './CreateJournalModal'
 
 class SideBar extends React.Component {
 
     arrayOfJournals = () => {
-        return this.props.journals.map(journal => 
+        return this.props.journals.map(journal =>
             // <Button component={RouterLink} to={`journals/${journal.id}`}>{journal.year}</Button>
-            <NavLink to={`/journals/${journal.id}`}>{journal.title}</NavLink>
+            <NavLink to={`/journals/${journal.id}`}>{journal.title}<br></br></NavLink>
         )
     }
+
+    numberOfDreams = () => {
+        const array = []
+        this.props.journals.forEach(journalEl => {
+            if (journalEl.user_id === this.props.user.id) {
+                array.push(journalEl.dreams.length)
+            }
+        })
+        if (array.length > 0) {
+            const sum = array.reduce((result, number) => result + number)
+            return sum
+        }
+        else
+            return 0
+    }
+
 
     render() {
         return (
             <Wrapper>
-                {this.props.journals ? this.arrayOfJournals() : null} 
-                <Name>Warren</Name>
+                {this.props.user ?
+                    <aside class="profile-card">
+                        <header>
+                            {/* <a href="www.espn.com"> */}
+                            <img src="https://pbs.twimg.com/profile_images/894730722271010816/1g-2p3_m_400x400.jpg" alt="profile pic"></img>
+                            {/* </a> */}
+                            <h1>{this.props.user.username}</h1>
+
+
+                            <h2>Noob Dreamer</h2>
+                            <p>Number of Dreams: {this.numberOfDreams()}</p> 
+
+                        </header>
+
+
+                        <div class="user-birthday">
+
+                            <p>Birthday: {this.props.user.birthday}</p>
+                            <p></p>
+
+                        </div>
+
+
+                    </aside>
+
+                    :
+                    null}
+
+                <div className="journalList">
+                    {this.props.user ?
+                        this.arrayOfJournals()
+                        :
+                        null
+                    }
+                    <br></br>
+                </div>
+                <div className="createJournal">
+                    {this.props.user ?
+                        <CreateJournalModal />
+                        :
+                        null
+                    }
+                </div>
             </Wrapper>
         );
     }
@@ -27,15 +84,12 @@ class SideBar extends React.Component {
 const Wrapper = styled.div`
   width: 20%;
   height: 100%;
-  background-color: purple
-`;
-
-const Name = styled.h1`
-  color: pink;
+  background-color: lightyellow
 `;
 
 function msp(state) {
     return ({
+        user: state.user,
         journals: state.journals
     })
 }

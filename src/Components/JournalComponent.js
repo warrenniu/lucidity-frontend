@@ -10,7 +10,7 @@ class JournalComponent extends React.Component {
     render() {
         return (
             <div>
-                <h3>Journal Component</h3>
+                {/* <h3>Journal Component</h3> */}
                 <h3>{this.props.journalObj.title}</h3>
                 <br></br>
                 <DreamContainer journalId={this.props.journalObj.id} />

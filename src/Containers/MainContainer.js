@@ -19,7 +19,7 @@ class MainContainer extends React.Component {
         // console.log(this.props.user)
         return (
             <div>
-                <h3>Main Container</h3>
+                {/* <h3>Main Container</h3> */}
 
                 {this.props.user !== null ? <JournalContainer /> : null}
                 {/* {this.arrayOfJournals()} */}

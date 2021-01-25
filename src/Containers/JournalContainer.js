@@ -1,7 +1,5 @@
 import React from 'react'
 import JournalComponent from '../Components/JournalComponent'
-import CreateJournalComponent from '../Components/CreateJournalComponent'
-import CreateJournalModal from '../Components/CreateJournalModal'
 import { connect } from 'react-redux'
 import { getUser } from '../Redux/actions'
 import { getJournals } from '../Redux/actions'
@@ -15,8 +13,8 @@ class JournalContainer extends React.Component {
     }
     arrayOfJournals = () => {
         let journalArray = this.props.journals
-        journalArray = journalArray.filter(journal => journal.user_id === this.props.user.id)
-        journalArray = journalArray.sort((a, b) => parseFloat(b.year) - parseFloat(a.year))
+        journalArray = journalArray.filter(journal => journal.id === parseInt(this.props.match.params.id))
+        // journalArray = journalArray.sort((a, b) => parseFloat(b.year) - parseFloat(a.year))
         return journalArray.map(journalEl => <JournalComponent key={journalEl.id} journalObj={journalEl} />)
     }
 
@@ -24,11 +22,7 @@ class JournalContainer extends React.Component {
     render() {
         return (
             <div>
-                <h3>Journal Container</h3>
-                <div>
-                <CreateJournalModal />
-                {/* <CreateJournalComponent /> */}
-                </div>
+                {/* <h3>Journal Container</h3> */}
                 <div>
                 {this.props.user ? this.arrayOfJournals() : null }
                 </div>

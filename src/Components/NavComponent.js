@@ -18,9 +18,9 @@ class NavComponent extends React.Component {
 				{this.props.user ?
 					<div>
                         <SearchComponent />
-						<Button style={{'fontSize': '20px'}} color="primary" component={RouterLink} to="/home">
+						{/* <Button style={{'fontSize': '20px'}} color="primary" component={RouterLink} to="/home">
 							Home
-						</Button>
+						</Button> */}
 
 						<Button style={{'fontSize': '20px'}} color="primary" component={RouterLink} to="/journals">
 							Journals

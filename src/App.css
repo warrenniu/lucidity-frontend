@@ -7,12 +7,8 @@
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     }
-    
-    /* .div1 { grid-area: 1 / 1 / 2 / 2; }
-    .div2 { grid-area: 1 / 2 / 2 / 5; }
-    .div3 { grid-area: 2 / 1 / 5 / 2; }
-    .div4 { grid-area: 2 / 2 / 4 / 5; }
-    .div5 { grid-area: 4 / 2 / 5 / 5; } */
+
+    /*************** GRIDDING ******************/
 
     .div1 { grid-area: 1 / 1 / 2 / 2; }
     .div2 { grid-area: 1 / 2 / 2 / 5; }
@@ -28,7 +24,9 @@
   .div1 {
       display: flex;
       align-items: flex-end;
-      
+      /* background-color: lightpink; */
+      border-bottom-style: solid;
+    border-color: purple;
       justify-content: flex-start;
   }
 
@@ -39,7 +37,7 @@
     align-items: flex-end;
     border-bottom-style: solid;
     border-color: purple;
-    /* background-color: orange;  */
+    /* background-color: lightpink;  */
   }
   /* .div2 {
     display: inline;
@@ -70,20 +68,22 @@
 
   .div4 {
     display: flex;
-    /* background-color:yellow; */
+    background-color:lightpink;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     overflow-x: scroll;
   } 
   
-  .div4::-webkit-scrollbar {
+  .div3::-webkit-scrollbar {
     display: none;
   }
 
   #signupComponent {
     margin-top: 50px;
+    margin-left: 34%;
+    text-align: center
     /* margin-bottom: 100px;	 */
   }
 
@@ -118,6 +118,18 @@
     float: right;
   }
 
+  .journalList {
+    text-align: center
+  }
+
+  .homePage {
+    text-align: center
+  }
+
+  .createJournal {
+    text-align: center
+  }
+
 
   .pieChart {
     display: flex;
@@ -137,3 +149,119 @@
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(127, 20, 214, 0.6);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(127, 20, 214, 0.6);
   }
+
+  /************************ PROFILE CARD ************************/
+
+  @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700);
+
+
+	/* body {
+	    font: 300 13px/1.6 Roboto, Helvetica, Arial;
+	    color: #444;
+	    position: relative;
+	    background: #448AFF;
+	    height: 100vh;
+	    text-align: center;
+		background: #3f51b5;
+
+		background: url('http://ali.shahab.pk/blur.php?img=http://ali.shahab.pk/ali-shahab.jpg&x=250') no-repeat center center;
+		background-size: cover;
+	} */
+	/* body:after{
+		content: "";
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		background-color: rgba(0,0,0,.5);
+		z-index: -1
+	} */
+
+	img {
+	    -ms-interpolation-mode: bicubic;
+	    vertical-align: middle;
+	    border: 0;
+	}
+
+	.profile-card{
+		width: 300px;
+		border-radius: 2px;
+		overflow: hidden;
+		box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+		position: relative;
+		margin: auto;
+		background: rgba(255,255,255,1);
+		top: 22%;
+		transform: translateY(-50%);
+	}
+
+	.profile-card header{
+		display: block;
+		position: relative;
+		background: rgba(255,255,255,1);
+		text-align: center;
+		padding: 30px 0 20px;
+		z-index: 1;
+		overflow: hidden;
+	}
+
+	.profile-card header:before{
+		content: "";
+		position: absolute;
+		background-size: cover;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		z-index: -1;
+		
+	}
+
+	.profile-card header:after{
+		content: "";
+		position: absolute;
+		bottom: -1px;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		background-image: linear-gradient(
+		    to bottom,
+		    rgba(255, 255, 255, 0) 0%,
+		    rgba(255, 255, 255, 1) 100%
+		);
+	}
+
+	.profile-card header img{
+		border-radius: 100%;
+		overflow: hidden;
+		width: 150px;
+		/*border: 1px solid rgba(255,255,255,.5);*/
+		box-shadow: 0 1px 0 rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.1);
+	}
+
+	.profile-card header h1{
+		font-weight: 200;
+		font-size: 42px;
+		color: #444;
+		letter-spacing: -3px;
+		margin: 0;
+		padding: 0;
+	}
+
+	.profile-card header h2{
+		font-weight: 400;
+		font-size: 14px;
+		color: #666;
+		letter-spacing: .5px;
+		margin: 0;
+		padding: 0;
+	}
+
+	.profile-card .user-birthday{
+		padding: 0 30px;
+		text-align: center;
+		color: #888;
+	}

@@ -10,6 +10,7 @@ import DreamContainer from './Containers/DreamContainer'
 import MainContainer from './Containers/MainContainer'
 import AnalysisComponent from './Components/AnalysisComponent'
 import SideBar from "./Components/SideBar";
+import JournalComponent from "./Components/JournalComponent"
 // import styled from "styled-components";
 import {connect} from 'react-redux'
 import {getUser} from './Redux/actions'
@@ -66,7 +67,7 @@ componentDidMount() {
            <SideBar /> 
           <Switch>
             <Route path="/journals/analysis" component={AnalysisComponent} />
-            <Route exact path="/journals/:id" component={DreamContainer} />
+            <Route exact path="/journals/:id" component={JournalContainer} />
             <Route path="/login" component={LogInComponent} />
             <Route path="/signup" component={SignUpComponent} />
             <Route path="/home" component={HomeComponent} />
