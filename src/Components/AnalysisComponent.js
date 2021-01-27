@@ -64,9 +64,9 @@ function AnalysisComponent(props) {
                     }
                 </Pie>
                 <Legend layout="horizontal" align="center" width={400} />
-                <Tooltip />
+                <Tooltip /> 
             </PieChart>
-            <div>
+            
                 <h3>Dreams by Month</h3>
                 <PieChart width={400} height={400}>
                     <Pie dataKey="value" isAnimationActive={false} data={data02} cx={200} cy={200} outerRadius={80}>
@@ -79,7 +79,7 @@ function AnalysisComponent(props) {
                     <Legend layout="horizontal" align="center" width={400} />
                     <Tooltip />
                 </PieChart>
-            </div>
+            
         </div>
     )
 }

@@ -30,8 +30,6 @@ class SignUpComponent extends React.Component {
                 'border': '2px solid white',
                 'borderRadius': '3%',
                 'boxShadow': `5px 5px 5px 2px lightgrey`,
-                'width': '250px',
-                'padding': '15px',
                 'textAlign': 'center',
             }}>
                 <h3>Capture your Dreams</h3>

@@ -26,7 +26,7 @@ class LogInComponent extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="homePage">
                 <div id="loginComponent" style={{
                     'border': '2px solid white',
                     'borderRadius': '3%',
@@ -35,7 +35,7 @@ class LogInComponent extends React.Component {
                     'padding': '15px',
                     'textAlign': 'center',
                 }}>
-                    <h3>Log In Component</h3>
+                    <h3>Welcome back, Dreamer</h3>
                     <form onSubmit={this.submitHandler}>
                         <input className='inputOverride' style={{ 'marginBottom': '10px' }} type="text" name="username" placeholder="username" value={this.state.username} onChange={this.changeHandler} /><br />
                         <input className='inputOverride' style={{ 'marginBottom': '10px' }} type="password" name="password" placeholder="password" value={this.state.password} onChange={this.changeHandler} /><br />

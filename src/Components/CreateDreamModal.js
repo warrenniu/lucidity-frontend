@@ -63,8 +63,8 @@ function CreateDreamModal(props) {
     const [character, setCharacter] = useInput("")
     const [place, setPlace] = useInput("")
     const [action, setAction] = useInput("")
-    // const [image, setImage] = useInput("")
-    const [image, setImage] = useState("")
+    const [image, setImage] = useInput("")
+    // const [image, setImage] = useState("")
 
     const formSubmitHandler = (event) => {
         const token = localStorage.getItem("token")
@@ -77,7 +77,7 @@ function CreateDreamModal(props) {
             character: character,
             place: place,
             action: action,
-            // image: image.image,
+            image: image,
             journal_id: props.journalId
 
         }
@@ -145,12 +145,12 @@ function CreateDreamModal(props) {
 
     return (
         <div>
-            {/* <Fab className="addDream" color="secondary" aria-label="add" type="button" onClick={handleOpen}>
+            <Fab className="addDream" color="secondary" aria-label="add" type="button" onClick={handleOpen}>
                 <AddIcon />
-            </Fab> */}
-            <Button variant="contained" color="secondary" type="button" onClick={handleOpen}>
+            </Fab>
+            {/* <Button variant="contained" color="secondary" type="button" onClick={handleOpen}>
                 Add Dream
-      </Button>
+      </Button> */}
             <Modal
                 aria-labelledby="modal-dream-title"
                 aria-describedby="modal-dream-story"
@@ -184,7 +184,7 @@ function CreateDreamModal(props) {
                         <br></br>
                         <TextField label="Action" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Action" name="action" value={action} onChange={setAction} />
                         <br></br>
-                        {/* <TextField id="outlined-basic" label="Image" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Image" name="image" value={image} onChange={setImage} /> */}
+                        <TextField id="outlined-basic" label="Image" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Image - paste URL" name="image" value={image} onChange={setImage} />
                         {/* <input type="file" accept="image/*" multiple={false} value={image} onChange={setImage} /> */}
                         <DreamImage setImage={setImage} />
                         <Button variant="contained" color="secondary" type="submit">

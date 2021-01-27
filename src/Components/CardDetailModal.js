@@ -51,7 +51,7 @@ export default function TransitionsModal(props) {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="modal-dream-title">{props.currentDream.title}</h2>
-            <p id="modal-dream-story">{props.currentDream.story}</p>
+            <p id="modal-dream-story">Story: {props.currentDream.story}</p>
             <p id="modal-dream-character">Characters: {props.currentDream.character}</p>
             <p id="modal-dream-place">Place: {props.currentDream.place}</p>
             <p id="modal-dream-action">Action: {props.currentDream.action}</p>

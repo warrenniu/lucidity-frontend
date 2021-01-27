@@ -18,6 +18,7 @@ class JournalComponent extends React.Component {
                 <DreamContainer journalId={this.props.journalObj.id} />
                 <CreateDreamModal journalId={this.props.journalObj.id} />
                 <br></br>
+                <br></br>
                 <EditJournalModal currentJournal={this.props.journalObj} />
                 <br></br>
                 <DeleteJournalComponent currentJournal={this.props.journalObj} />
