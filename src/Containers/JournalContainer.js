@@ -21,11 +21,12 @@ class JournalContainer extends React.Component {
 
     render() {
         return (
-            <div>
-                {/* <h3>Journal Container</h3> */}
-                <div>
+            <div style={{
+                'width': '100%'
+            }}>
+                {/* <h3>Journal Container</h3> */} 
                 {this.props.user ? this.arrayOfJournals() : null }
-                </div>
+                
             </div>
         )
 

@@ -26,12 +26,13 @@ export default function MediaCard(props) {
 
   return (
     
-    <Card style={{'backgroundColor': '#fff'}} className={classes.root}>
+    <Card clasName="mediaCard" style={{'backgroundColor': '#fff'}} className={classes.root}>
       <CardActionArea>
         <CardMedia
           color="primary"
           className={classes.media}
           image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fyn7bQjEeWYo%2Fhqdefault.jpg&f=1&nofb=1"
+          // image={props.currentDream.image}
           title="dream image"
         />
         <CardContent>

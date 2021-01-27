@@ -27,7 +27,7 @@ class LogInComponent extends React.Component {
     render() {
         return (
             <div>
-                <div id="signupComponent" style={{
+                <div id="loginComponent" style={{
                     'border': '2px solid white',
                     'borderRadius': '3%',
                     'boxShadow': `5px 5px 5px 2px lightgrey`,

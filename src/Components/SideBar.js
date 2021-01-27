@@ -32,7 +32,7 @@ class SideBar extends React.Component {
 
     render() {
         return (
-            <Wrapper>
+            <Wrapper className="sidebar">
                 {this.props.user ?
                     <aside class="profile-card">
                         <header>
@@ -42,7 +42,7 @@ class SideBar extends React.Component {
                             <h1>{this.props.user.username}</h1>
 
 
-                            <h2>Noob Dreamer</h2>
+                            <h2>Beginner Dreamer</h2>
                             <p>Number of Dreams: {this.numberOfDreams()}</p> 
 
                         </header>
@@ -82,9 +82,9 @@ class SideBar extends React.Component {
 }
 
 const Wrapper = styled.div`
-  width: 20%;
-  height: 100%;
-  background-color: lightyellow
+  width: auto;
+  height: auto;
+  background-color: lightyellow;
 `;
 
 function msp(state) {

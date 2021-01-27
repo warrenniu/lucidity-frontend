@@ -9,15 +9,18 @@ class JournalComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{
+                'width': '100%'
+            }}>
                 {/* <h3>Journal Component</h3> */}
                 <h3>{this.props.journalObj.title}</h3>
                 <br></br>
                 <DreamContainer journalId={this.props.journalObj.id} />
+                <CreateDreamModal journalId={this.props.journalObj.id} />
+                <br></br>
                 <EditJournalModal currentJournal={this.props.journalObj} />
                 <br></br>
                 <DeleteJournalComponent currentJournal={this.props.journalObj} />
-                <CreateDreamModal journalId={this.props.journalObj.id} />
             </div>
         )
     }

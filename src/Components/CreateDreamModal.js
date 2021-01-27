@@ -13,6 +13,8 @@ import TextField from '@material-ui/core/TextField';
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import DreamImage from './DreamImage'
+import { DirectUpload } from 'activestorage';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -41,6 +43,16 @@ function useInput(initialValue) {
     return [value, handleChange];
 }
 
+// function onImageChange(initialValue) {
+//     const [value, setValue] = useState(initialValue);
+
+//     function handleChange(event) {
+//         setValue({image: event.target.files[0]})
+//     }
+
+//     return [value, handleChange];
+// }
+
 function CreateDreamModal(props) {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
@@ -51,9 +63,11 @@ function CreateDreamModal(props) {
     const [character, setCharacter] = useInput("")
     const [place, setPlace] = useInput("")
     const [action, setAction] = useInput("")
-    const [image, setImage] = useInput("")
+    // const [image, setImage] = useInput("")
+    const [image, setImage] = useState("")
 
     const formSubmitHandler = (event) => {
+        const token = localStorage.getItem("token")
         event.preventDefault()
         const newDream = {
             title: title,
@@ -63,15 +77,63 @@ function CreateDreamModal(props) {
             character: character,
             place: place,
             action: action,
-            image: image,
+            // image: image.image,
             journal_id: props.journalId
 
         }
+
+        // fetch('http://localhost:4000/api/v1/dreams', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json', 
+        //         'Accept': 'application/json',
+        //         Authorization: `Bearer ${token}`
+        //     }, 
+        //     body: JSON.stringify(newDream)
+        // })
+        // .then(response => response.json())
+        // .then(data => uploadFile(image, data))
+
+
+        console.log(newDream)
         props.postDream(newDream)
+        let formData = new FormData();
+        formData.append('image', newDream.image);
+        console.log(formData)
+        // props.postDream(newDream)
+        // fetch('http://localhost:4000/api/v1/dreams', {
+        //     method: 'POST',
+        //     body: formData
+        // })
+        //     .catch(error => console.log(error));
         // this.setState({ title: "", rating: "", date: "", story: "", character: "", place: "", action: "", image: "" })
         // props.history.push('/journals')
 
+        document.getElementById("createForm").reset()
+
     }
+
+    // const uploadFile = (file, dream) => {
+    //     const upload = new DirectUpload(file, 'http://localhost:4000/api/v1/rails/active_storage/direct_uploads')
+    //     console.log(upload, file)
+    //     upload.create((error, blob) => {
+    //         console.log(blob)
+    //         if (error) {
+    //             console.log(error)
+    //         } else {
+    //             fetch(`http://localhost:4000/api/v1/dreams/${dream.id}`, {
+    //                 method: 'PUT', 
+    //                 headers: {
+    //                     'Content-Type': 'application/json', 
+    //                     'Accept': 'application/json'
+    //                 }, 
+    //                 body: JSON.stringify({image: blob.signed_id})
+    //             })
+    //             .then(response => response.json())
+    //             .then(result => console.log(result))
+    //         }
+    //     })
+    // }
 
     const handleOpen = () => {
         setOpen(true);
@@ -83,9 +145,12 @@ function CreateDreamModal(props) {
 
     return (
         <div>
-            <Fab className="addDream" color="secondary" aria-label="add" type="button" onClick={handleOpen}>
+            {/* <Fab className="addDream" color="secondary" aria-label="add" type="button" onClick={handleOpen}>
                 <AddIcon />
-            </Fab>
+            </Fab> */}
+            <Button variant="contained" color="secondary" type="button" onClick={handleOpen}>
+                Add Dream
+      </Button>
             <Modal
                 aria-labelledby="modal-dream-title"
                 aria-describedby="modal-dream-story"
@@ -99,9 +164,8 @@ function CreateDreamModal(props) {
                 }}
             >
                 <Fade in={open}>
-                    <form style={{ 'marginBottom': '15px' }} onSubmit={formSubmitHandler} className={classes.paper}>
-                        <TextField id="outlined-basic" label="Title" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Title" name="title" value={title} onChange={setTitle} />
-                        {/* <TextField id="outlined-basic" label="Rating" className='inputOverride' style={{ 'marginRight': '15px' }} type="integer" placeholder="Rating" name="rating" value={rating} onChange={setRating} /> */}
+                    <form id="createForm" style={{ 'marginBottom': '15px' }} onSubmit={formSubmitHandler} className={classes.paper}>
+                        <TextField label="Title" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Title" name="title" value={title} onChange={setTitle} />
                         <Box className="ratingForm" component="fieldset" mb={3} borderColor="transparent">
                             <Typography component="legend">Rating</Typography>
                             <Rating
@@ -110,17 +174,19 @@ function CreateDreamModal(props) {
                                 onChange={setRating}
                             />
                         </Box>
-                        <TextField id="outlined-basic" label="Date" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Date" name="date" value={date} onChange={setDate} />
+                        <TextField label="Date" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Date" name="date" value={date} onChange={setDate} />
                         <br></br>
-                        <TextField id="outlined-basic" label="Story" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Story" name="story" value={story} onChange={setStory} />
+                        <TextField label="Story" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Story" name="story" value={story} onChange={setStory} />
                         <br></br>
-                        <TextField id="outlined-basic" label="Character" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Character" name="character" value={character} onChange={setCharacter} />
+                        <TextField label="Character" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Character" name="character" value={character} onChange={setCharacter} />
                         <br></br>
-                        <TextField id="outlined-basic" label="Place" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Place" name="place" value={place} onChange={setPlace} />
+                        <TextField label="Place" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Place" name="place" value={place} onChange={setPlace} />
                         <br></br>
-                        <TextField id="outlined-basic" label="Action" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Action" name="action" value={action} onChange={setAction} />
+                        <TextField label="Action" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Action" name="action" value={action} onChange={setAction} />
                         <br></br>
-                        <TextField id="outlined-basic" label="Image" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Image" name="image" value={image} onChange={setImage} />
+                        {/* <TextField id="outlined-basic" label="Image" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Image" name="image" value={image} onChange={setImage} /> */}
+                        {/* <input type="file" accept="image/*" multiple={false} value={image} onChange={setImage} /> */}
+                        <DreamImage setImage={setImage} />
                         <Button variant="contained" color="secondary" type="submit">
                             Add Dream
 					</Button>

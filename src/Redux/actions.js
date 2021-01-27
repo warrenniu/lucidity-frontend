@@ -1,4 +1,4 @@
-import { GET_JOURNALS, POST_JOURNAL, PATCH_JOURNAL, DELETE_JOURNAL, GET_USER, REMOVE_USER, POST_USER, POST_LOGIN, POST_DREAM, GET_DREAMS, PATCH_DREAM, DELETE_DREAM, SEARCH } from './actionTypes'
+import { GET_JOURNALS, POST_JOURNAL, PATCH_JOURNAL, DELETE_JOURNAL, GET_USER, REMOVE_USER, POST_USER, POST_LOGIN, POST_DREAM, GET_DREAMS, PATCH_DREAM, DELETE_DREAM, POST_IMAGE, SEARCH } from './actionTypes'
 
 const BASE_URL = "http://localhost:4000"
 
@@ -169,6 +169,7 @@ export function postDream(newDreamObj) {
                 dispatch({ type: POST_DREAM, payload: dreamObj })
             })
     }
+    
 }
 
 export function patchDream(updatedDreamObj) {

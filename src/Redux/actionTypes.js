@@ -10,4 +10,5 @@ export const POST_DREAM = "POST_DREAM"
 export const GET_DREAMS = "GET_DREAMS"
 export const PATCH_DREAM = "PATCH_DREAM"
 export const DELETE_DREAM = "DELETE_DREAM"
+export const POST_IMAGE = "POST_IMAGE"
 export const SEARCH = 'SEARCH';

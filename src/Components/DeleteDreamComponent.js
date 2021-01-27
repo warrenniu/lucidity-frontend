@@ -8,7 +8,6 @@ function DeleteDreamComponent(props) {
 
     const clickHandler = () => {
         props.deleteDream(props.currentDream)
-        props.history.push('/journals')
     }
 
     return (
