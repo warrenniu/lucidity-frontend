@@ -54,7 +54,7 @@ function AnalysisComponent(props) {
     const colors = ['red', 'purple', 'orange', 'blue', 'green', 'pink', 'silver', 'brown', 'turquoise', 'black', 'lime', 'teal']
     return (
         <div className="pieChart">
-            <h3>Dreams by Rating</h3>
+            <h3>Rating:</h3>
             <PieChart width={400} height={400}>
                 <Pie dataKey="value" isAnimationActive={false} data={data01} cx={200} cy={200} outerRadius={80}>
                     {
@@ -67,7 +67,7 @@ function AnalysisComponent(props) {
                 <Tooltip /> 
             </PieChart>
             
-                <h3>Dreams by Month</h3>
+                <h3>Month:</h3>
                 <PieChart width={400} height={400}>
                     <Pie dataKey="value" isAnimationActive={false} data={data02} cx={200} cy={200} outerRadius={80}>
                         {

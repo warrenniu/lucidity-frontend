@@ -134,9 +134,9 @@
   }
 
   .addDream {
-    text-align: center;
+    /* text-align: center; */
     margin: 50px 0;
-    float: right
+    /* float: right */
   }
 
   .searchComponent {
