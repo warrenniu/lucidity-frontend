@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { postUser } from '../Redux/actions'
 import { withRouter } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography';
 
 class SignUpComponent extends React.Component {
     state = {
@@ -32,7 +33,8 @@ class SignUpComponent extends React.Component {
                 'boxShadow': `5px 5px 5px 2px lightgrey`,
                 'textAlign': 'center',
             }}>
-                <h3>Capture your Dreams</h3>
+                <Typography variant="h6">Capture your Dreams</Typography>
+                <br></br>
                 <form onSubmit={this.submitHandler}>
                     <input className='inputOverride' style={{ 'marginBottom': '10px' }} type="text" name="username" placeholder="username" value={this.state.username} onChange={this.changeHandler} /><br />
                     <input className='inputOverride' style={{ 'marginBottom': '10px' }} type="password" name="password" placeholder="password" value={this.state.password} onChange={this.changeHandler} /><br />

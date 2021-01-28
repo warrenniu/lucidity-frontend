@@ -11,6 +11,7 @@ import reportWebVitals from './reportWebVitals';
 import 'fontsource-roboto';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
 
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
@@ -28,6 +29,9 @@ const theme = createMuiTheme({
       main: '#824AFF',
       dark: '#824AFF',
       contrastText: '#fff',
+    },
+    typography: {
+      fontFamily: 'Roboto'
     }
   },
 })
