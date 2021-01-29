@@ -51,9 +51,6 @@ function dreamsReducer(prevState = defaultState.dreams, action) {
         case "GET_DREAMS":
             return action.payload
         case "POST_DREAM":
-            //     const addDreamToJournal = prevState.find(journal => journal.id === action.payload.journal_id)
-            //     addDreamToJournal.dreams = [...addDreamToJournal.dreams, action.payload]
-            //     return [...prevState]
             return [...prevState, action.payload]
         case "PATCH_DREAM":
             let newDreamArray = [...prevState]
@@ -71,7 +68,6 @@ function valueReducer(prevState = defaultState.value, action) {
     switch (action.type) {
         case "SEARCH":
             return action.payload
-
         default:
             return prevState;
     }
