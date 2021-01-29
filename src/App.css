@@ -83,6 +83,10 @@
   #header {
     margin-top: 50px
   }
+
+  .journlTitle {
+    padding: 10px
+  }
   #signupComponent {
     /* display: flex;
     align-self: center; */
@@ -107,6 +111,7 @@
     margin-left: 25%;
     margin-top: 3%
   }
+
 
   .dreamCard {
     display: flex;
@@ -170,7 +175,7 @@
     /* flex-wrap: wrap;  */
     width: 100%;
     margin: 50px;
-    padding: 50px;
+    padding: 1%;
     /* border: solid; */
     float: left;
 

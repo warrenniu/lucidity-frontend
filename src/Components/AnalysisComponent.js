@@ -1,6 +1,7 @@
 import React from 'react'
 import { PieChart, Pie, Cell, Legend, Tooltip } from 'recharts';
 import { connect } from 'react-redux'
+import Typography from '@material-ui/core/Typography';
 
 function AnalysisComponent(props) {
 
@@ -51,10 +52,10 @@ function AnalysisComponent(props) {
     ];
 
 
-    const colors = ['red', 'purple', 'orange', 'blue', 'green', 'pink', 'silver', 'brown', 'turquoise', 'black', 'lime', 'teal']
+    const colors = ['red', 'purple', 'black', 'blue', 'green', '#c237c6', '#7f6a8c', 'brown', 'turquoise', '#9b861a', 'lime', 'teal']
     return (
         <div className="pieChart">
-            <h3>Rating:</h3>
+            <Typography variant="h6">Dreams by Rating:</Typography>
             <PieChart width={400} height={400}>
                 <Pie dataKey="value" isAnimationActive={false} data={data01} cx={200} cy={200} outerRadius={80}>
                     {
@@ -67,7 +68,7 @@ function AnalysisComponent(props) {
                 <Tooltip /> 
             </PieChart>
             
-                <h3>Month:</h3>
+                <Typography variant="h6">Dreams by Month:</Typography>
                 <PieChart width={400} height={400}>
                     <Pie dataKey="value" isAnimationActive={false} data={data02} cx={200} cy={200} outerRadius={80}>
                         {
