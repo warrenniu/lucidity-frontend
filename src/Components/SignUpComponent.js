@@ -27,12 +27,7 @@ class SignUpComponent extends React.Component {
     }
     render() {
         return (
-            <div id="signupComponent" style={{
-                'border': '2px solid white',
-                'borderRadius': '3%',
-                'boxShadow': `5px 5px 5px 2px lightgrey`,
-                'textAlign': 'center',
-            }}>
+            <div id="signupComponent">
                 <Typography variant="h6">Capture your Dreams</Typography>
                 <br></br>
                 <form onSubmit={this.submitHandler}>
