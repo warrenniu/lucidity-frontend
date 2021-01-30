@@ -7,7 +7,6 @@ class DreamContainer extends React.Component {
 
     state = {
         searchTerm: "",
-        
     }
 
     componentDidMount() {
@@ -15,7 +14,7 @@ class DreamContainer extends React.Component {
     }
 
     searchChangeHandler = (event) => {
-        this.setState({searchTerm: event.target.value})
+        this.setState({ searchTerm: event.target.value })
     }
 
     arrayOfDreams = () => {
@@ -25,23 +24,18 @@ class DreamContainer extends React.Component {
         return dreamArray.map(dreamEl => <DreamComponent key={dreamEl.id} dreamObj={dreamEl} />)
     }
 
-
-
-
     render() {
         return (
             <div>
-            <div className="dreamCard">
-                {this.arrayOfDreams()}
-            </div>
+                <div className="dreamCard">
+                    {this.arrayOfDreams()}
+                </div>
             </div>
         )
     }
 }
 function msp(state) {
     return {
-        user: state.user,
-        journals: state.journals,
         dreams: state.dreams,
         value: state.value
     }

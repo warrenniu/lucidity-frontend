@@ -15,39 +15,36 @@ class NavComponent extends React.Component {
     render() {
         return (
             <div>
-				{this.props.user ?
-					<div>
+                {this.props.user ?
+                    <div>
                         <SearchComponent />
-						{/* <Button style={{'fontSize': '20px'}} color="primary" component={RouterLink} to="/home">
-							Home
-						</Button> */}
 
-						<Button style={{'fontSize': '20px'}} color="primary" component={RouterLink} to="/journals">
-							Journals
+                        <Button style={{ 'fontSize': '20px' }} color="primary" component={RouterLink} to="/journals">
+                            Journals
 						</Button>
 
-						<Button style={{'fontSize': '20px'}} color="primary" component={RouterLink} to="/journals/analysis">
-							Analysis
+                        <Button style={{ 'fontSize': '20px' }} color="primary" component={RouterLink} to="/journals/analysis">
+                            Analysis
 						</Button>
 
-						<Button style={{'fontSize': '20px'}} color="primary" component={RouterLink} to="/login" onClick={() => this.logOutHandler()}>
-							Log Out
+                        <Button style={{ 'fontSize': '20px' }} color="primary" component={RouterLink} to="/login" onClick={() => this.logOutHandler()}>
+                            Log Out
 						</Button>
-					</div>
-					:
-					<div>
-						<Button style={{'fontSize': '20px'}} color="primary" component={RouterLink} to="/home">
-							Home
+                    </div>
+                    :
+                    <div>
+                        <Button style={{ 'fontSize': '20px' }} color="primary" component={RouterLink} to="/home">
+                            Home
 						</Button>
-						
-						<Button style={{'fontSize': '20px'}} color="primary" component={RouterLink} to="/login">
-							Log In
+
+                        <Button style={{ 'fontSize': '20px' }} color="primary" component={RouterLink} to="/login">
+                            Log In
 						</Button>
-					</div>
-				}
-			</div>
-		)
-	}
+                    </div>
+                }
+            </div>
+        )
+    }
 }
 
 function msp(state) {
@@ -57,9 +54,9 @@ function msp(state) {
 }
 
 function mdp(dispatch) {
-	return {
-		removeUser: () => dispatch(removeUser())
-	}
+    return {
+        removeUser: () => dispatch(removeUser())
+    }
 }
 
 
