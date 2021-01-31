@@ -21,17 +21,10 @@ function DeleteJournalComponent(props) {
     )
 }
 
-function msp(state) {
-    return {
-        user: state.user,
-        journals: state.journals
-    }
-}
-
 function mdp(dispatch) {
     return {
         deleteJournal: journalObj => dispatch(deleteJournal(journalObj))
     }
 }
 
-export default connect(msp, mdp)(withRouter(DeleteJournalComponent))
+export default connect(null, mdp)(withRouter(DeleteJournalComponent))

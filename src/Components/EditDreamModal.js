@@ -6,7 +6,6 @@ import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
 import { patchDream } from '../Redux/actions'
-import { withRouter } from 'react-router-dom'
 import TextField from '@material-ui/core/TextField';
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
@@ -63,8 +62,6 @@ function EditDreamModal(props) {
 
         }
         props.patchDream(updatedDream)
-        // props.history.push('/journals')
-
     }
 
     const handleOpen = () => {
@@ -96,7 +93,6 @@ function EditDreamModal(props) {
                     <form style={{ 'marginBottom': '15px' }} onSubmit={formSubmitHandler} className={classes.paper}>
                         <TextField id="outlined-basic" label="Title" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Title" name="title" value={title} onChange={setTitle} />
                         <br></br>
-                        {/* <TextField id="outlined-basic" label="Rating" className='inputOverride' style={{ 'marginRight': '15px' }} type="integer" placeholder="Rating" name="rating" value={rating} onChange={setRating} /> */}
                         <Box className="ratingForm" component="fieldset" mb={3} borderColor="transparent">
                             <Typography component="legend">Rating</Typography>
                             <Rating
@@ -125,12 +121,6 @@ function EditDreamModal(props) {
         </div>
     );
 }
-function msp(state) {
-    return {
-        journals: state.journals,
-        dreams: state.dreams
-    }
-}
 
 function mdp(dispatch) {
     return {
@@ -138,4 +128,4 @@ function mdp(dispatch) {
     }
 }
 
-export default connect(msp, mdp)(withRouter(EditDreamModal))
+export default connect(null, mdp)(EditDreamModal)

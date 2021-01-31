@@ -3,7 +3,6 @@ import CreateDreamModal from './CreateDreamModal'
 import DreamContainer from '../Containers/DreamContainer'
 import EditJournalModal from './EditJournalModal'
 import DeleteJournalComponent from '../Components/DeleteJournalComponent'
-import { connect } from 'react-redux'
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
@@ -14,7 +13,6 @@ class JournalComponent extends React.Component {
             <div style={{
                 'width': '100%'
             }}>
-                {/* <h3>Journal Component</h3> */}
                 <Box m={1} p={2}>
                 <Typography variant="h5">{this.props.journalObj.title}</Typography>
                 </Box>
@@ -31,12 +29,4 @@ class JournalComponent extends React.Component {
     }
 }
 
-function msp(state) {
-    return {
-        user: state.user,
-        journals: state.journals
-    }
-}
-
-
-export default connect(msp, null)(JournalComponent)
+export default JournalComponent

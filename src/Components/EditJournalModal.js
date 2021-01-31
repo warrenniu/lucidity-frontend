@@ -6,7 +6,6 @@ import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
 import { patchJournal } from '../Redux/actions'
-import { withRouter } from 'react-router-dom'
 import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,7 +49,6 @@ function EditJournalModal(props) {
 
         }
         props.patchJournal(updatedJournal)
-        // props.history.push('/journals')
 
     }
 
@@ -95,12 +93,6 @@ function EditJournalModal(props) {
         </div>
     );
 }
-function msp(state) {
-    return {
-        journals: state.journals,
-        dreams: state.dreams
-    }
-}
 
 function mdp(dispatch) {
     return {
@@ -108,4 +100,4 @@ function mdp(dispatch) {
     }
 }
 
-export default connect(msp, mdp)(withRouter(EditJournalModal))
+export default connect(null, mdp)(EditJournalModal)
