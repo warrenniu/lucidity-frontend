@@ -97,9 +97,9 @@ function CreateDreamModal(props) {
 
         console.log(newDream)
         props.postDream(newDream)
-        let formData = new FormData();
-        formData.append('image', newDream.image);
-        console.log(formData)
+        // let formData = new FormData();
+        // formData.append('image', newDream.image);
+        // console.log(formData)
         // props.postDream(newDream)
         // fetch('http://localhost:4000/api/v1/dreams', {
         //     method: 'POST',
@@ -109,7 +109,21 @@ function CreateDreamModal(props) {
         // this.setState({ title: "", rating: "", date: "", story: "", character: "", place: "", action: "", image: "" })
         // props.history.push('/journals')
 
-        document.getElementById("createForm").reset()
+        
+
+        /********************* Attempt to reset Form (FAILED) *************************/
+        // document.getElementById("createForm").reset()
+        // event.target.reset()
+
+        /********************* Attempt to reset Form (FAILED) *************************/
+        let btnClear = document.querySelector('.addDreamBtn')
+        let inputs = document.querySelectorAll('.inputOverride')
+        console.log("in Create Dream", btnClear)
+        console.log("in Create Dream", inputs)
+
+        btnClear.addEventListener('click', () => {
+            inputs.forEach(input => input.value = "")
+        })
 
     }
 
@@ -164,7 +178,7 @@ function CreateDreamModal(props) {
                 }}
             >
                 <Fade in={open}>
-                    <form id="createForm" style={{ 'marginBottom': '15px' }} onSubmit={formSubmitHandler} className={classes.paper}>
+                    <form id="createForm" style={{ 'marginBottom': '15px' }} onSubmit={formSubmitHandler.bind()} className={classes.paper}>
                         <TextField label="Title" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Title" name="title" value={title} onChange={setTitle} />
                         <Box className="ratingForm" component="fieldset" mb={3} borderColor="transparent">
                             <Typography component="legend">Rating</Typography>
@@ -187,7 +201,7 @@ function CreateDreamModal(props) {
                         <TextField id="outlined-basic" label="Image" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Image - paste URL" name="image" value={image} onChange={setImage} />
                         {/* <input type="file" accept="image/*" multiple={false} value={image} onChange={setImage} /> */}
                         <DreamImage setImage={setImage} />
-                        <Button variant="contained" color="secondary" type="submit">
+                        <Button className='addDreamBtn' variant="contained" color="secondary" type="submit">
                             Add Dream
 					</Button>
                     </form>

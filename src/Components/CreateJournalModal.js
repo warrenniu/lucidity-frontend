@@ -55,8 +55,6 @@ function CreateJournalModal(props) {
         }
         props.postJournal(newJournal)
         // this.setState({ year: "", month: "" })
-        // props.history.push('/journals')
-
     }
 
     const handleOpen = () => {
@@ -90,7 +88,7 @@ function CreateJournalModal(props) {
                         <br></br>
                         <TextField label="Year" className='inputOverride' style={{ 'marginRight': '15px' }} type="integer" placeholder="Year" name="year" value={year} onChange={setYear} />
                         <br></br>
-                        <TextField label="Month" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Date" name="date" value={month} onChange={setMonth} />
+                        <TextField label="Month" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Month" name="month" value={month} onChange={setMonth} />
                         <Button variant="contained" color="secondary" type="submit">
                             Create Journal
 					</Button>

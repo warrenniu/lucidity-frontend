@@ -40,16 +40,19 @@ class SideBar extends React.Component {
                             <img src="https://pbs.twimg.com/profile_images/894730722271010816/1g-2p3_m_400x400.jpg" alt="profile pic"></img>
                             {/* </a> */}
                             <h1>{this.props.user.username}</h1>
-
-
+                            
+                            {this.numberOfDreams() < 30 ?
                             <h2>Beginner Dreamer</h2>
-                            <p>Number of Dreams: {this.numberOfDreams()}</p> 
-
+                            :
+                            <h2>Advanced Dreamer</h2>
+                            }
+                               
+                                
+                                
+                            
+                            <p>Number of Dreams: {this.numberOfDreams()}</p>
                         </header>
-
-
                         <div class="user-birthday">
-
                             <p>Birthday: {this.props.user.birthday}</p>
                             <p></p>
 
@@ -83,7 +86,7 @@ class SideBar extends React.Component {
 
 const Wrapper = styled.div`
   width: auto;
-  height: auto;
+  height: 100vh;
   background-color: lightyellow;
 `;
 
