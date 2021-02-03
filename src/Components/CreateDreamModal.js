@@ -69,7 +69,6 @@ function CreateDreamModal(props) {
     const [story, setStory] = useInput("")
     const [character, setCharacter] = useInput("")
     const [place, setPlace] = useInput("")
-    const [action, setAction] = useInput("")
     const [image, setImage] = useInput("")
     // const [image, setImage] = useState("")
 
@@ -91,7 +90,6 @@ function CreateDreamModal(props) {
             story: story,
             character: character,
             place: place,
-            action: action,
             image: image,
             journal_id: props.journalId
 
@@ -223,8 +221,6 @@ function CreateDreamModal(props) {
                         <TextField label="Character" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Character" name="character" value={character} onChange={setCharacter} />
                         <br></br>
                         <TextField label="Place" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Place" name="place" value={place} onChange={setPlace} />
-                        <br></br>
-                        <TextField label="Action" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Action" name="action" value={action} onChange={setAction} />
                         <br></br>
                         <TextField id="outlined-basic" label="Image" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Image - paste URL" name="image" value={image} onChange={setImage} />
                         {/* <input type="file" accept="image/*" multiple={false} value={image} onChange={setImage} /> */}

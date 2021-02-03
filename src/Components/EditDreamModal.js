@@ -51,7 +51,6 @@ function EditDreamModal(props) {
     const [story, setStory] = useInput(props.currentDream.story)
     const [character, setCharacter] = useInput(props.currentDream.character)
     const [place, setPlace] = useInput(props.currentDream.place)
-    const [action, setAction] = useInput(props.currentDream.action)
     const [image, setImage] = useInput(props.currentDream.image)
 
     const handleDateChange = (date) => {
@@ -71,7 +70,6 @@ function EditDreamModal(props) {
             story: story,
             character: character,
             place: place,
-            action: action,
             image: image,
             id: props.currentDream.id
 
@@ -116,7 +114,6 @@ function EditDreamModal(props) {
                                 onChange={setRating}
                             />
                         </Box>
-                        {/* <TextField label="Date" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Date" name="date" value={date} onChange={setDate} /> */}
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
 
                             <KeyboardDatePicker
@@ -137,8 +134,6 @@ function EditDreamModal(props) {
                         <TextField label="Character" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Character" name="character" value={character} onChange={setCharacter} />
                         <br></br>
                         <TextField label="Place" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Place" name="place" value={place} onChange={setPlace} />
-                        <br></br>
-                        <TextField label="Action" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Action" name="action" value={action} onChange={setAction} />
                         <br></br>
                         <TextField label="Image" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Image" name="image" value={image} onChange={setImage} />
                         <Button variant="contained" color="secondary" type="submit">
