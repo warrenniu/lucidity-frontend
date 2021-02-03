@@ -10,6 +10,13 @@ import TextField from '@material-ui/core/TextField';
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
+
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -40,19 +47,27 @@ function EditDreamModal(props) {
     const [open, setOpen] = useState(false);
     const [title, setTitle] = useInput(props.currentDream.title)
     const [rating, setRating] = useInput(props.currentDream.rating)
-    const [date, setDate] = useInput(props.currentDream.date)
+    const [selectedDate, setSelectedDate] = useState(props.currentDream.date)
     const [story, setStory] = useInput(props.currentDream.story)
     const [character, setCharacter] = useInput(props.currentDream.character)
     const [place, setPlace] = useInput(props.currentDream.place)
     const [action, setAction] = useInput(props.currentDream.action)
     const [image, setImage] = useInput(props.currentDream.image)
 
+    const handleDateChange = (date) => {
+        const dateString = date.toString()
+        const newDate = dateString.split("-")
+        const finalDate = newDate[0].split(" ")
+        const dateFormat = `${finalDate[1]} ${finalDate[2]} ${finalDate[3]}`
+        setSelectedDate(dateFormat);
+    };
+
     const formSubmitHandler = (event) => {
         event.preventDefault()
         const updatedDream = {
             title: title,
             rating: rating,
-            date: date,
+            date: selectedDate,
             story: story,
             character: character,
             place: place,
@@ -101,7 +116,21 @@ function EditDreamModal(props) {
                                 onChange={setRating}
                             />
                         </Box>
-                        <TextField label="Date" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Date" name="date" value={date} onChange={setDate} />
+                        {/* <TextField label="Date" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Date" name="date" value={date} onChange={setDate} /> */}
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+
+                            <KeyboardDatePicker
+                                disableToolbar
+                                variant="inline"
+                                format="MM/dd/yyyy"
+                                margin="normal"
+                                value={selectedDate}
+                                onChange={handleDateChange}
+                                KeyboardButtonProps={{
+                                    'aria-label': 'change date',
+                                }}
+                            />
+                        </MuiPickersUtilsProvider>
                         <br></br>
                         <TextField label="Story" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Story" name="story" value={story} onChange={setStory} />
                         <br></br>

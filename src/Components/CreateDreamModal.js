@@ -14,7 +14,6 @@ import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import 'date-fns';
-// import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import {
     MuiPickersUtilsProvider,
@@ -66,7 +65,6 @@ function CreateDreamModal(props) {
     const [open, setOpen] = useState(false);
     const [title, setTitle] = useInput("")
     const [rating, setRating] = useInput("")
-    // const [date, setDate] = useInput("")
     const [selectedDate, setSelectedDate] = React.useState(new Date(`${currentDate.getFullYear()} - ${currentDate.getMonth() + 1} - ${currentDate.getDay()}`))
     const [story, setStory] = useInput("")
     const [character, setCharacter] = useInput("")
@@ -76,15 +74,11 @@ function CreateDreamModal(props) {
     // const [image, setImage] = useState("")
 
     const handleDateChange = (date) => {
-        // const newDate = date.split("-")
-        // console.log("new Date", newDate)
         const dateString = date.toString()
         const newDate = dateString.split("-")
         const finalDate = newDate[0].split(" ")
         const dateFormat = `${finalDate[1]} ${finalDate[2]} ${finalDate[3]}`
-        // console.log("newDate", dateFormat)
         setSelectedDate(dateFormat);
-
     };
 
     const formSubmitHandler = (event) => {
