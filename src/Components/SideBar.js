@@ -9,7 +9,6 @@ class SideBar extends React.Component {
 
     arrayOfJournals = () => {
         return this.props.journals.map(journal =>
-            // <Button component={RouterLink} to={`journals/${journal.id}`}>{journal.year}</Button>
             <NavLink to={`/journals/${journal.id}`}>{journal.title}<br></br></NavLink>
         )
     }
@@ -46,21 +45,13 @@ class SideBar extends React.Component {
                             :
                             <h2>Advanced Dreamer</h2>
                             }
-                               
-                                
-                                
-                            
                             <p>Number of Dreams: {this.numberOfDreams()}</p>
                         </header>
                         <div class="user-birthday">
                             <p>Birthday: {this.props.user.birthday}</p>
                             <p></p>
-
                         </div>
-
-
                     </aside>
-
                     :
                     null}
 

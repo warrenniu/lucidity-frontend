@@ -25,6 +25,11 @@ class LogInComponent extends React.Component {
         event.preventDefault()
         this.props.postLogin(this.state)
         this.props.history.push('/journals')
+        // if (this.props.user) {
+        // this.props.history.push('/journals')
+        // } else {
+        //     window.alert("Invalid Username or Password. Please try again.")
+        // }
     }
     render() {
         return (
@@ -44,6 +49,12 @@ class LogInComponent extends React.Component {
         )
     }
 }
+
+// function msp(state) {
+//     return {
+//         user: state.user,
+//     }
+//   }
 
 function mdp(dispatch) {
     return {

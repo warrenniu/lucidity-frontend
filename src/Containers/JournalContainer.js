@@ -2,6 +2,7 @@ import React from 'react'
 import JournalComponent from '../Components/JournalComponent'
 import { connect } from 'react-redux'
 import { getJournals } from '../Redux/actions'
+import { withRouter } from 'react-router-dom'
 import '../App.css';
 
 class JournalContainer extends React.Component {
@@ -40,4 +41,4 @@ function mdp(dispatch) {
     }
 }
 
-export default connect(msp, mdp)(JournalContainer)
+export default connect(msp, mdp)(withRouter(JournalContainer))
