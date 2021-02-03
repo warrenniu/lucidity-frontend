@@ -13,8 +13,15 @@ import TextField from '@material-ui/core/TextField';
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import 'date-fns';
+// import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
 import DreamImage from './DreamImage'
-import { DirectUpload } from 'activestorage';
+// import { DirectUpload } from 'activestorage';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -54,11 +61,13 @@ function useInput(initialValue) {
 // }
 
 function CreateDreamModal(props) {
+    const currentDate = new Date()
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [title, setTitle] = useInput("")
     const [rating, setRating] = useInput("")
-    const [date, setDate] = useInput("")
+    // const [date, setDate] = useInput("")
+    const [selectedDate, setSelectedDate] = React.useState(new Date(`${currentDate.getFullYear()} - ${currentDate.getMonth() + 1} - ${currentDate.getDay()}`))
     const [story, setStory] = useInput("")
     const [character, setCharacter] = useInput("")
     const [place, setPlace] = useInput("")
@@ -66,13 +75,25 @@ function CreateDreamModal(props) {
     const [image, setImage] = useInput("")
     // const [image, setImage] = useState("")
 
+    const handleDateChange = (date) => {
+        // const newDate = date.split("-")
+        // console.log("new Date", newDate)
+        const dateString = date.toString()
+        const newDate = dateString.split("-")
+        const finalDate = newDate[0].split(" ")
+        const dateFormat = `${finalDate[1]} ${finalDate[2]} ${finalDate[3]}`
+        // console.log("newDate", dateFormat)
+        setSelectedDate(dateFormat);
+
+    };
+
     const formSubmitHandler = (event) => {
         const token = localStorage.getItem("token")
         event.preventDefault()
         const newDream = {
             title: title,
             rating: rating,
-            date: date,
+            date: selectedDate,
             story: story,
             character: character,
             place: place,
@@ -109,7 +130,7 @@ function CreateDreamModal(props) {
         // this.setState({ title: "", rating: "", date: "", story: "", character: "", place: "", action: "", image: "" })
         // props.history.push('/journals')
 
-        
+
 
         /********************* Attempt to reset Form (FAILED) *************************/
         // document.getElementById("createForm").reset()
@@ -188,7 +209,20 @@ function CreateDreamModal(props) {
                                 onChange={setRating}
                             />
                         </Box>
-                        <TextField label="Date" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Date" name="date" value={date} onChange={setDate} />
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+
+                            <KeyboardDatePicker
+                                disableToolbar
+                                variant="inline"
+                                format="MM/dd/yyyy"
+                                margin="normal"
+                                value={selectedDate}
+                                onChange={handleDateChange}
+                                KeyboardButtonProps={{
+                                    'aria-label': 'change date',
+                                }}
+                            />
+                        </MuiPickersUtilsProvider>
                         <br></br>
                         <TextField label="Story" className='inputOverride' style={{ 'marginRight': '15px' }} type="text" placeholder="Story" name="story" value={story} onChange={setStory} />
                         <br></br>

@@ -105,7 +105,12 @@
   #loginComponent {
     margin-top: 5%;
     margin-left: 42%;
-
+    border: 2px solid white;
+    border-radius: 3%;
+    box-shadow: 5px 5px 5px 2px lightgrey;
+    width: 250px;
+    padding: 15px;
+    text-align: center
   }
 
   #header {

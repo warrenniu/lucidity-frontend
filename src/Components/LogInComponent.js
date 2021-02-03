@@ -28,14 +28,7 @@ class LogInComponent extends React.Component {
     render() {
         return (
             <div className="homePage">
-                <div id="loginComponent" style={{
-                    'border': '2px solid white',
-                    'borderRadius': '3%',
-                    'boxShadow': `5px 5px 5px 2px lightgrey`,
-                    'width': '250px',
-                    'padding': '15px',
-                    'textAlign': 'center',
-                }}>
+                <div id="loginComponent">
                     <Typography variant="h6">Welcome back, Dreamer</Typography>
                     <br></br>
                     <form onSubmit={this.submitHandler}>
@@ -51,16 +44,10 @@ class LogInComponent extends React.Component {
     }
 }
 
-function msp(state) {
-    return {
-        user: state.user
-    }
-}
-
 function mdp(dispatch) {
     return {
         postLogin: userInfo => dispatch(postLogin(userInfo))
     }
 }
 
-export default connect(msp, mdp)(withRouter(LogInComponent))
+export default connect(null, mdp)(withRouter(LogInComponent))
