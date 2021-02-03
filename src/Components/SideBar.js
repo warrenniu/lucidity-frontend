@@ -34,7 +34,7 @@ class SideBar extends React.Component {
         return (
             <Wrapper className="sidebar">
                 {this.props.user ?
-                    <aside class="profile-card">
+                    <aside className="profile-card">
                         <header>
                             {/* <a href="www.espn.com"> */}
                             <img src="https://pbs.twimg.com/profile_images/894730722271010816/1g-2p3_m_400x400.jpg" alt="profile pic"></img>

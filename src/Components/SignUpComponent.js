@@ -47,10 +47,10 @@ class SignUpComponent extends React.Component {
                 <Typography variant="h6">Capture your Dreams</Typography>
                 <br></br>
                 <form onSubmit={this.submitHandler}>
-                    <TextField className='inputOverride' style={{ 'marginBottom': '10px' }} type="text" name="username" placeholder="username" value={this.state.username} onChange={this.changeHandler} /><br />
+                    <TextField className='inputOverride' style={{ 'marginBottom': '10px', 'backgroundColor': 'lightpink' }} autoComplete="off" type="text" name="username" placeholder="username" value={this.state.username} onChange={this.changeHandler} /><br />
                     <TextField className='inputOverride' style={{ 'marginBottom': '10px' }} type="password" name="password" placeholder="password" value={this.state.password} onChange={this.changeHandler} /><br />
-                    <TextField className='inputOverride' style={{ 'marginBottom': '10px' }} type="text" name="first_name" placeholder="First Name" value={this.state.first_name} onChange={this.changeHandler} /><br />
-                    <TextField className='inputOverride' style={{ 'marginBottom': '10px' }} type="text" name="last_name" placeholder="Last Name" value={this.state.last_name} onChange={this.changeHandler} /><br />
+                    <TextField className='inputOverride' style={{ 'marginBottom': '10px' }} type="text" name="first_name" autoComplete="off" placeholder="First Name" value={this.state.first_name} onChange={this.changeHandler} /><br />
+                    <TextField className='inputOverride' style={{ 'marginBottom': '10px' }} type="text" name="last_name" autoComplete="off" placeholder="Last Name" value={this.state.last_name} onChange={this.changeHandler} /><br />
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
 
                             <KeyboardDatePicker
