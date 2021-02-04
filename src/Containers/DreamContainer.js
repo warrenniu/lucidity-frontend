@@ -1,6 +1,7 @@
 import React from 'react'
 import { getDreams } from '../Redux/actions'
 import DreamComponent from '../Components/DreamComponent'
+import SortComponent from '../Components/SortComponent'
 import { connect } from 'react-redux'
 
 class DreamContainer extends React.Component {
@@ -27,6 +28,7 @@ class DreamContainer extends React.Component {
     render() {
         return (
             <div>
+                <SortComponent />
                 <div className="dreamCard">
                     {this.arrayOfDreams()}
                 </div>

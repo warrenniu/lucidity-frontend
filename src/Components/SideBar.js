@@ -5,18 +5,18 @@ import { NavLink } from 'react-router-dom'
 // import Button from '@material-ui/core/Button';
 import CreateJournalModal from './CreateJournalModal'
 
-class SideBar extends React.Component {
+function SideBar(props) {
 
-    arrayOfJournals = () => {
-        return this.props.journals.map(journal =>
+    const arrayOfJournals = () => {
+        return props.journals.map(journal =>
             <NavLink to={`/journals/${journal.id}`}>{journal.title}<br></br></NavLink>
         )
     }
 
-    numberOfDreams = () => {
+    const numberOfDreams = () => {
         const array = []
-        this.props.journals.forEach(journalEl => {
-            if (journalEl.user_id === this.props.user.id) {
+        props.journals.forEach(journalEl => {
+            if (journalEl.user_id === props.user.id) {
                 array.push(journalEl.dreams.length)
             }
         })
@@ -29,42 +29,41 @@ class SideBar extends React.Component {
     }
 
 
-    render() {
         return (
             <Wrapper className="sidebar">
-                {this.props.user ?
+                {props.user ?
                     <aside className="profile-card">
                         <header>
                             {/* <a href="www.espn.com"> */}
                             <img src="https://pbs.twimg.com/profile_images/894730722271010816/1g-2p3_m_400x400.jpg" alt="profile pic"></img>
                             {/* </a> */}
-                            <h1>{this.props.user.username}</h1>
+                            <h1>{props.user.username}</h1>
                             
-                            {this.numberOfDreams() < 30 ?
+                            {numberOfDreams() < 30 ?
                             <h2>Beginner Dreamer</h2>
                             :
                             <h2>Advanced Dreamer</h2>
                             }
-                            <p>Number of Dreams: {this.numberOfDreams()}</p>
+                            <p>Number of Dreams: {numberOfDreams()}</p>
                         </header>
                         <div class="user-birthday">
-                            <p>Birthday: {this.props.user.birthday}</p>
-                            <p></p>
+                            <p>Birthday: {props.user.birthday}</p>
                         </div>
                     </aside>
                     :
                     null}
 
                 <div className="journalList">
-                    {this.props.user ?
-                        this.arrayOfJournals()
+                    {props.user ?
+                        arrayOfJournals()
                         :
                         null
                     }
                     <br></br>
                 </div>
+                <br></br>
                 <div className="createJournal">
-                    {this.props.user ?
+                    {props.user ?
                         <CreateJournalModal />
                         :
                         null
@@ -73,7 +72,7 @@ class SideBar extends React.Component {
             </Wrapper>
         );
     }
-}
+
 
 const Wrapper = styled.div`
   width: auto;
