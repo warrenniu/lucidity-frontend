@@ -1,15 +1,33 @@
-import React from 'react' 
+import React, {useEffect, useState} from 'react'
 import { connect } from 'react-redux'
 
 function SortComponent(props) {
+    const [data, setData] = useState([]);
+    const [sortType, setSortType] = useState('date')
+
+    useEffect(() => {
+    const sortArray = type => {
+        const types = {
+            date: 'date',
+            rating: 'rating',
+        };
+        const sortProperty = types[type];
+        const sorted = [...props.dreams].sort((a, b) => b[sortProperty] - a[sortProperty]);
+        console.log(sorted);
+        setData(sorted);
+    };
+
+    sortArray(sortType);
+  }, [sortType]); 
+
+
 
     return (
         <div>
-<select>
-        <option value="albums">Albums</option>
-        <option value="members">Members</option>
-        <option value="formed">Formed in</option>
-</select>
+            <select onChange={(event) => setSortType(event.target.value)}>
+                <option value="date">Sort by Date</option>
+                <option value="rating">Sort by Rating</option>
+            </select>
 
         </div>
     )

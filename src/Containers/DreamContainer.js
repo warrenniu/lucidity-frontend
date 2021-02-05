@@ -21,7 +21,7 @@ class DreamContainer extends React.Component {
     arrayOfDreams = () => {
         let dreamArray = this.props.dreams.filter(dream => dream.journal_id === this.props.journalId)
         dreamArray = dreamArray.filter(dreamEl => dreamEl.title.toLowerCase().includes(this.props.value.toLowerCase()))
-        dreamArray = dreamArray.sort((a, b) => parseFloat(a.id) - parseFloat(b.id))
+        // dreamArray = dreamArray.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
         return dreamArray.map(dreamEl => <DreamComponent key={dreamEl.id} dreamObj={dreamEl} />)
     }
 
