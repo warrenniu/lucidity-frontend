@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import { connect } from 'react-redux'
 
 function SortComponent(props) {
-    const [data, setData] = useState([]);
     const [sortType, setSortType] = useState('date')
 
     useEffect(() => {
@@ -16,7 +15,7 @@ function SortComponent(props) {
         console.log(sorted);
         setData(sorted);
     };
-
+ 
     sortArray(sortType);
   }, [sortType]); 
 
