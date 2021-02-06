@@ -7,24 +7,25 @@ function AnalysisComponent(props) {
 
     const checkRating = (value) => {
         const array = []
+        // eslint-disable-next-line
         props.journals.map(journalEl => {
             if (journalEl.user_id === props.user.id) {
                 journalEl.dreams.forEach(dreamEl => {
                     if (dreamEl.rating === value) {
-                        array.push(dreamEl)
+                         array.push(dreamEl) 
                     }
                 })
             }
         })
         return array.length
-    }
+}
 
     const checkMonth = (value) => {
         const array = []
         props.journals.forEach(journalEl => {
             if (journalEl.user_id === props.user.id) {
                 if (journalEl.month === value) {
-                    array.push(journalEl.dreams.length)
+                    return array.push(journalEl.dreams.length)
                 }
             }
         })

@@ -81,7 +81,7 @@ function CreateDreamModal(props) {
     };
 
     const formSubmitHandler = (event) => {
-        const token = localStorage.getItem("token")
+        // const token = localStorage.getItem("token")
         event.preventDefault()
         const newDream = {
             title: title,
@@ -167,7 +167,7 @@ function CreateDreamModal(props) {
     };
 
     const handleClose = () => {
-        setOpen(false);
+        setOpen(false); 
     };
 
     return (
