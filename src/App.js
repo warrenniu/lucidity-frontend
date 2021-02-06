@@ -15,7 +15,7 @@ import './App.css';
 
 class App extends React.Component {
 
-BASE_URL = "http://localhost:4000"
+BASE_URL = "http://lucidityapp.herokuapp.com"
 
 componentDidMount() {
   const token = localStorage.getItem("token")

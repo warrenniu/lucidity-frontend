@@ -1,6 +1,6 @@
 import { GET_USER, GET_JOURNALS, GET_DREAMS, POST_USER, POST_LOGIN, POST_JOURNAL, POST_DREAM, PATCH_JOURNAL, PATCH_DREAM, DELETE_JOURNAL, DELETE_DREAM,  REMOVE_USER, SEARCH } from './actionTypes'
 
-const BASE_URL = "http://localhost:4000"
+const BASE_URL = "http://lucidityapp.herokuapp.com"
 
 
 /************ GET ACTIONS ***************/
